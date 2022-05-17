@@ -20,7 +20,7 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
     - Snippets can be searched and filtered based on given search term.
     
 ### Contributors
-  [Contribution guidelines for this project](docs/CONTRIBUTING.md)
+  [Hussen Teyeb](https://github.com/ekramteyeb) & [Mesfin Tegegne](https://github.com/mesfint)
 
 ## Technologies Used
    - ####  Frontend
