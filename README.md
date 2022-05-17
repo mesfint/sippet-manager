@@ -4,6 +4,8 @@
 
 Snippet Manager is a useful tool for a daily and routine code  collection,A user can add code snippet or any note that can accomplish a certain feature.
 
+![Basic Mockup](https://github.com/mesfint/snippet-manager/blob/master/Snippet.png)
+
 
 
 ## Basic Features
@@ -52,7 +54,7 @@ yarn start
 Local Url: http://localhost:5000/
 ```
 
-# Basic Mockup 
+
 
 
 
