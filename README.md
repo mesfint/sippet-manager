@@ -19,7 +19,7 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
     
 
 ## Technologies Used
-    ####  Frontend
+   - ####  Frontend
       - React
       - Redux
       - Tailwind/MUI
