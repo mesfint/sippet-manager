@@ -20,9 +20,7 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
 
 3.  ### Filter Snippets
     - Snippets can be searched and filtered based on given search term.
-    
-### Contributors
-  [Hussen Teyeb](https://github.com/ekramteyeb) & [Mesfin Tegegne](https://github.com/mesfint)
+   
 
 ## Technologies Used
    - ####  Frontend
@@ -49,11 +47,11 @@ Min npm verion: 1.2
 yarn start
 
 ```
-
 ```
 Local Url: http://localhost:5000/
 ```
-
+### Contributors
+  [Hussen Teyeb](https://github.com/ekramteyeb) & [Mesfin Tegegne](https://github.com/mesfint)
 
 
 
