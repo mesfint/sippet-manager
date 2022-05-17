@@ -2,7 +2,9 @@
 
 ## About This Project
 
-Snippet Manager is a useful tool for a daily and routine code  collection,A user can add code snippet or any note that can accomplish a certain feature. 
+Snippet Manager is a useful tool for a daily and routine code  collection,A user can add code snippet or any note that can accomplish a certain feature.
+
+
 
 ## Basic Features
 
@@ -17,6 +19,8 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
 3.  ### Filter Snippets
     - Snippets can be searched and filtered based on given search term.
     
+### Contributors
+    -  [Teyeb Hussen](https://github.com/ekramteyeb) & [Mesfin tegegne](https://github.com/mesfint)
 
 ## Technologies Used
    - ####  Frontend
