@@ -1,15 +1,21 @@
 doctype html 
 html
   head
-    title First View
+    title=name
   body
-    h1 First View
-    p Hello, World!
-    p This is the first view.
+    h1=name 
+    p Hello, from #{user.name}!
+    if(user)
+      h1 Hi, #{user.name}
+    else 
+      a(href='/sign_up') Sign Up
+    |
     
     a(href='/second_view') Second View
-    
-    a(href='/') Home
+    |
+    |
+    h3 Testing static file serving: 
+    img(src='images/cat.jpg')
   
     
     a(href='/logout') Logout

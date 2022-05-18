@@ -12,6 +12,16 @@ router.get("/snippet/add", function (req, res) {
 router.get("/", (req, res) => {
   res.send("Initial Empty");
 });
+router.get("/firstpage", (req, res) => {
+  res.render("first_view", {
+    user: { name: "", age: "" },
+  });
+});
+router.get("/components", (req, res) => {
+  res.render("content", {
+    user: { name: "", age: "" },
+  });
+});
 
 router.get("*", (req, res) => {
   res.send(" Sorry not found");
