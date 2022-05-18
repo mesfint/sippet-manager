@@ -12,8 +12,8 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/time", time);
-app.use("/test", router);
+app.post("/snippet/add", router);
+
 app.use("/", router);
 
 app.listen(5000, () => {
