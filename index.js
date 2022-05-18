@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/snippet/add", router);
+app.post("/sign_in", router);
 
 app.use("/", router);
 
