@@ -1,0 +1,31 @@
+doctype html 
+html
+  head
+    title First View
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    h1.header Snippet Manager
+    div.container
+      form(action="#", method="post") 
+        input.input-title(type='text' name='title'  placeholder='Title')
+        | 
+        select.select-option(name='language')
+          option(value='javascript') Javascript
+          option(value='html') Html
+          option(value='css') Css
+          option(value='ts') TypeScript
+          option(value='react') ReactJS
+          option(value='node') Node
+          option(value='mongo') Mongodb
+        |
+        input.input-desc(type='text' name='description'  placeholder='Code Snippet...')
+        |
+        |
+        button.btn-submit(onclick='#{something()}') Submit
+        |
+        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
