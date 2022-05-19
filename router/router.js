@@ -1,24 +1,34 @@
 import express from "express";
+import axios from "axios";
 import Snippet from "../model/snippet.js";
-import {create, getAll} from "../controller/controller.js"
+import { create, getSnippetsById, getAll } from "../controller/controller.js";
+
+const userNames = ["Sean", "George", "Roger", "Timothy", "Pierce", "Daniel"];
+const bestMovie = "Casino Royale";
+const licensedToKill = true;
 
 const router = express.Router();
 
 router.get("/snippet", function (req, res) {
   res.render("index");
 });
-
-//create snippet 
-router.post("/snippet", create);
-router.get("/components", (req, res) => {
-  res.render("content", {
-    user: { name: "", age: "" },
+router.get("/AllSnippets", function (req, res) {
+  axios.get("http://localhost:5000/snippets").then((response) => {
+    const snippets = response.data;
+    res.render("index", {
+      snippets,
+    });
   });
 });
 
-//get all snippets
-router.get("/snippets", getAll)
+//create snippet
+router.post("/snippet", create);
 
+//get all snippets
+router.get("/snippets", getAll);
+
+//get Snippet by Id
+router.get("/snippet/:id", getSnippetsById);
 
 router.get("/", (req, res) => {
   res.send("Initial Empty");
