@@ -6,18 +6,6 @@ import { time } from "./controller/controller.js";
 
 import router from "./router/router.js";
 
-//connect remote database
-mongoose
-  .connect(
-    "mongodb+srv://user:user@cluster0.oeybl.mongodb.net/snippets?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("database connected");
-    app.listen(5000, () => {
-      console.log("Server is running on port 5000");
-    });
-  });
-
 const app = express();
 const upload = multer();
 
@@ -46,9 +34,15 @@ app.use(bodyParser.json());
 //   res.send("recieved your request");
 // });
 
+app.use('/', router)
+
 //Get form
-app.get("/snippet", (req, res) => {
+/* app.get("/snippets", (req, res) => {
   res.render("index");
 });
 app.post("/snippet", router);
-app.post("/components", router);
+app.post("/components", router); */
+
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
+});
