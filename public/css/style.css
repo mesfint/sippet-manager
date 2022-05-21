@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;&display=swap');
 p {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
@@ -29,10 +30,10 @@ p {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
-    font-weight: 300;
+    font-family: 'Syncopate', sans-serif;
     color: #333;
     margin: 0;
-    padding: 10px;
+    /* padding: 10px; */
     margin-bottom: 10px;
 }
 
@@ -73,7 +74,7 @@ p {
 .editDelete {
     display: flex;
     justify-content: space-around;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .btn-submit {
@@ -90,10 +91,18 @@ p {
     cursor: pointer;
 }
 
+.badge {
+    background-color: #6983e2;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
+    max-width: 1050px;
     height: 50vh;
     margin: 0 auto;
     padding-top: 10px;

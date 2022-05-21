@@ -20,23 +20,29 @@ html
           option(value='node') Node
           option(value='mongo') Mongodb
         |
-        input.input-desc(type='text' name='description'  placeholder='Code Snippet...')
+        textarea.input-desc(type='text' name='description'  placeholder='Code Snippet...')
         |
         |
         button.btn-submit(type= "submit") Submit code
         |    
     ul.list-group
-            each snippet in snippets
-                li.list-group-item
-                    h3 #{snippet.title}
-                    p.lang #{snippet.language}
-                    p #{snippet.description}
+      each snippet in snippets
+          li.list-group-item
+            h3 #{snippet.title}           
+            p.lang #{snippet.language}
+            div 
+              a.btn.btn-primary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+            div.collapse.multi-collapse(id=`m${snippet._id}`)
+              pre.code-snippet.language-javascript
+                div.card.card-body #{snippet.description}
                   
-                    div.editDelete
-                    a(href = "/snippets/#{snippet.id}/edit") Edit
-                    form(action="/snippets/#{snippet.id}", method="post")
-                        input(type="hidden" name="_method" value="delete")
-                        input(type="submit" value="Delete")
+              |
+            a.btn(href=`/snippets/${snippet.id}`) Edit
+            //- form(action="/snippets/#{snippet.id}" method="post")
+            //-     input(type="submit" value="Delete")
+
+                  
+   
 
 
 

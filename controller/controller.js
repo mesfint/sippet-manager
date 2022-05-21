@@ -1,8 +1,31 @@
 import Snippet from "../model/snippet.js";
+import axios from "axios";
+import { response } from "express";
 
-export const time = (req, res, next) => {
-  console.log("New request is at", Date.now());
-  next();
+export const allSnippets = async (req, res) => {
+  let snippets;
+  try {
+    const response = await axios.get("http://localhost:5000/snippets");
+    snippets = await response.data;
+  } catch (error) {
+    snippets = [];
+  }
+  res.render("index", {
+    snippets: snippets,
+    snippet: { title: "", description: "", language: "" },
+  });
+};
+//find a sinppet
+export const finOneSnippet = async (req, res) => {
+  let snippets;
+  let id = req.params.id;
+  try {
+    const response = await axios.get("http://localhost:5000/snippets");
+    snippets = await response.data;
+  } catch (error) {
+    snippets = [];
+  }
+  res.render("index", { snippets: snippets, snippet: snippets[id] });
 };
 
 //create snippet
@@ -47,8 +70,6 @@ export async function getAll(req, res) {
 
     //res.render("AllSnippets", {});
     res.send(snipptes);
-
-    //res.json( await );
   } catch (error) {
     console.log(error);
   }
@@ -64,3 +85,38 @@ export async function getSnippetsById(req, res) {
     console.log(error);
   }
 }
+
+//update snippets
+export const updateSnippets = (req, res) => {
+  const snippets = req.body;
+  if (!snippets.title || !snippets.description || !snippets.language) {
+    res.render("show_message", {
+      message: "Please fill all fields",
+      type: "error",
+    });
+  } else {
+    Snippet.findByIdAndUpdate(
+      req.params.id,
+      {
+        title: snippets.title,
+        description: snippets.description,
+        language: snippets.language,
+      },
+
+      (err, response) => {
+        if (err) {
+          res.render("show_message", {
+            message: "Snippet Updates Error",
+            type: "error",
+          });
+        } else {
+          res.render("show_message", {
+            message: "Snippet Updates",
+            type: "success",
+            snippet: response,
+          });
+        }
+      }
+    );
+  }
+};
