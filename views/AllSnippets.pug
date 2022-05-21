@@ -1,0 +1,15 @@
+doctype html
+html
+    body
+        ul.list-group
+            each snippet in snippets
+                li.list-group-item
+                    a(href = "/snippets/#{snippet.id}") #{snippet.title}
+                    p #{snippet.description}
+                    p #{snippet.language}
+                    p #{snippet.created_at}
+                    p #{snippet.updated_at}
+                    a(href = "/snippets/#{snippet.id}/edit") Edit
+                    form(action="/snippets/#{snippet.id}", method="post")
+                        input(type="hidden" name="_method" value="delete")
+                        input(type="submit" value="Delete")

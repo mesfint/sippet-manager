@@ -6,6 +6,9 @@ mongoose
   )
   .then(() => {
     console.log("database connected");
+  })
+  .catch((err) => {
+    console.log("database connection error", err);
   });
 
 const snippetSchema = new mongoose.Schema({
