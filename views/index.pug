@@ -20,12 +20,40 @@ html
           option(value='node') Node
           option(value='mongo') Mongodb
         |
-        input.input-desc(type='text' name='description'  placeholder='Code Snippet...')
+        textarea.input-desc(type='text' name='description'  placeholder='Code Snippet...')
         |
         |
         button.btn-submit(type= "submit") Submit code
-        |
-        
+        |    
+    ul.list-group
+      each snippet in snippets
+          li.list-group-item
+            h3 #{snippet.title}           
+            p.lang #{snippet.language}
+            div 
+              a.btn.btn-primary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+            div.collapse.multi-collapse(id=`m${snippet._id}`)
+              pre.code-snippet.language-javascript
+                div.card.card-body #{snippet.description}
+                  
+              |
+            a.btn(href=`/snippets/${snippet.id}`) Edit
+            //- form(action="/snippets/#{snippet.id}" method="post")
+            //-     input(type="submit" value="Delete")
+
+                  
+   
+
+
+
+
+
+
+
+
+
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

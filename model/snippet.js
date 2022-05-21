@@ -12,6 +12,7 @@ mongoose
     }
   })
 
+
 const snippetSchema = new mongoose.Schema({
   title: {
     type: String,
