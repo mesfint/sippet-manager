@@ -43,6 +43,22 @@ export function create(req, res){
 //Get All snippet 
 
 export function getAll(req, res){
-  const snipptes = Snippet.find({})
-  console.log(snipptes)
+
+  Snippet.find((err, response) => {
+    if(err){
+         console.log('error happen', err)
+         res.render('show_message', {
+             message:'No Snippet found',
+             type:'error',
+             snippets:[]
+         })
+    }else{
+         res.render('snippets', {
+             message:"Snippets retrieved", 
+             type: 'success',
+             snippets:response, 
+         })
+    }
+     
+ }).sort({title : 1})
 }

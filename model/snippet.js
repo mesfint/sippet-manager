@@ -1,12 +1,16 @@
+import { application } from "express";
 import mongoose from "mongoose";
 //connect remote database
 mongoose
   .connect(
     "mongodb+srv://user:user@cluster0.oeybl.mongodb.net/snippets?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("database connected");
-  });
+  ,{},(err, data) => {
+    if(err){
+      console.log('Not connected')
+    }else{
+      console.log('Database connected')
+    }
+  })
 
 const snippetSchema = new mongoose.Schema({
   title: {
