@@ -8,11 +8,11 @@ html
   body
     h1.header Snippet Manager
     
-    div.container.col-10
-      form(action="#", method="post" class=" mx-auto" style="padding-left:60px;") 
-        input.input-title(type='text' name='title'  placeholder="title")
+    div.container
+      form(action="#", method="post") 
+        input.input-title(type='text' name='title'  value=`${snip.title}`)
         | 
-        select.select-option(name='language')
+        select.select-option(name='language' value=`${snip.langugae}`)
           option(value='javascript') Javascript
           option(value='html') Html
           option(value='css') Css
@@ -21,7 +21,7 @@ html
           option(value='node') Node
           option(value='mongo') Mongodb
         |
-        textarea.input-desc(type='text' name='description'  placeholder=`Description`)
+        textarea.input-desc(type='text' name='description' value=`${snip.description}` placeholder=`${snip.description}`)
         |
         |
         button.btn-submit(type= "submit") Submit code
@@ -40,7 +40,7 @@ html
                 div.card.card-body #{snippet.description}
                   
               |
-            a.btn(href=`/${snippet.id}`) Edit
+            //- a.btn(href=`/snippets/${snippet.id}`) Edit
             //- form(action="/snippets/#{snippet.id}" method="post")
             //-     input(type="submit" value="Delete")
 

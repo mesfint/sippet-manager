@@ -68,7 +68,7 @@ p {
     width: 80%;
     margin: 0 auto;
     margin-bottom: 10px;
-    display: flex;
+     display: flex;
 }
 
 .editDelete {
@@ -100,8 +100,13 @@ p {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 50px;
+   /*  display: flex; */
+    /* flex-direction: column;
     max-width: 1050px;
     height: 50vh;
     margin: 0 auto;
@@ -109,5 +114,5 @@ p {
     padding-right: 20px;
     padding-left: 20px;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+     */
 }

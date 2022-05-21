@@ -1,10 +1,26 @@
 import Snippet from "../model/snippet.js";
 import axios from "axios";
-import { response } from "express";
 
 export const allSnippets = async (req, res) => {
-  let snippets;
-  try {
+  Snippet.find((err, response) => {
+    if(err){
+      console.log('error happen', err)
+      res.render('show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+ }else{
+      res.render('index', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response, 
+          snip:{title:'Try me', description:'Amazing', snippet: 'console.log'}
+      })
+ }
+  })
+  /* try {
     const response = await axios.get("http://localhost:5000/snippets");
     snippets = await response.data;
   } catch (error) {
@@ -13,19 +29,29 @@ export const allSnippets = async (req, res) => {
   res.render("index", {
     snippets: snippets,
     snippet: { title: "", description: "", language: "" },
-  });
+  }); */
 };
 //find a sinppet
 export const finOneSnippet = async (req, res) => {
-  let snippets;
-  let id = req.params.id;
-  try {
-    const response = await axios.get("http://localhost:5000/snippets");
-    snippets = await response.data;
-  } catch (error) {
-    snippets = [];
-  }
-  res.render("index", { snippets: snippets, snippet: snippets[id] });
+  
+  Snippet.find((err, response) => {
+    if(err){
+      console.log('error happen', err)
+      res.render('show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+ }else{
+      res.render('indexOne', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response, 
+          snip:response.filter(s => s.id == req.params.id)[0]
+      })
+ }
+  })
 };
 
 //create snippet
@@ -122,7 +148,7 @@ export const updateSnippets = (req, res) => {
 
 //Get All snippet 
 
-export function getAll(req, res){
+/* export function getAll(req, res){
 
   Snippet.find((err, response) => {
     if(err){
@@ -141,4 +167,4 @@ export function getAll(req, res){
     }
      
  }).sort({title : 1})
-}
+} */
