@@ -1,4 +1,3 @@
-import { application } from "express";
 import mongoose from "mongoose";
 //connect remote database
 mongoose
