@@ -5,7 +5,7 @@ export const allSnippets = async (req, res) => {
   Snippet.find((err, response) => {
     if(err){
       console.log('error happen', err)
-      res.render('show_message', {
+      res.render('includes/show_message', {
           message:'No Snippet found',
           type:'error',
           snippets:[],
@@ -37,7 +37,7 @@ export const finOneSnippet = async (req, res) => {
   Snippet.find((err, response) => {
     if(err){
       console.log('error happen', err)
-      res.render('show_message', {
+      res.render('includes/show_message', {
           message:'No Snippet found',
           type:'error',
           snippets:[],
@@ -60,7 +60,7 @@ export function create(req, res) {
   const snippetInfo = req.body; //get the parsed information
 
   if (!snippetInfo.title || !snippetInfo.description || !snippetInfo.language) {
-    res.render("show_message", {
+    res.render("includes/show_message", {
       message: "Please fill in all fields",
       type: "error",
     });
@@ -72,13 +72,13 @@ export function create(req, res) {
     });
     newSnippet.save((err, response) => {
       if (err) {
-        res.render("show_message", {
+        res.render("includes/show_message", {
           message: "Error saving snippet to db",
           type: "error",
         });
       } else {
         //res.redirect("/snippet");
-        res.render("show_message", {
+        res.render("includes/show_message", {
           message: "New snippet added",
           type: "success",
           snippet: response,
@@ -116,7 +116,7 @@ export async function getSnippetsById(req, res) {
 export const updateSnippets = (req, res) => {
   const snippets = req.body;
   if (!snippets.title || !snippets.description || !snippets.language) {
-    res.render("show_message", {
+    res.render("includes/show_message", {
       message: "Please fill all fields",
       type: "error",
     });
@@ -131,12 +131,12 @@ export const updateSnippets = (req, res) => {
 
       (err, response) => {
         if (err) {
-          res.render("show_message", {
+          res.render("includes/show_message", {
             message: "Snippet Updates Error",
             type: "error",
           });
         } else {
-          res.render("show_message", {
+          res.render("includes/show_message", {
             message: "Snippet Updates",
             type: "success",
             snippet: response,
