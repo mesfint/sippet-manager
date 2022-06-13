@@ -26,7 +26,7 @@ router.get("/snippets/:id", getSnippetsById);
 
 //Update Snippets
 
-router.put("/snippets/:id", updateSnippets);
+router.put("/:id", updateSnippets);
 
 // router.get("/", (req, res) => {
 //   res.send("Initial Empty");

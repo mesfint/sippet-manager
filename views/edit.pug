@@ -2,18 +2,19 @@ doctype html
 html
   head
     title sinnipet-manager
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     link(rel="stylesheet", href="/css/style.css")
   body
-    h1.header Snippet Manager
+    h1.header Edit Snippet
     
     div.container.col-10
-      form(action="#", method="post" class=" mx-auto" style="padding-left:60px;") 
-        input.input-title(type='text' name='title'  value=`alue`)
+      form(action="", method="post" class=" mx-auto" style="padding-left:60px;") 
+        input.input-title(type='text' name='title'  value=`${snip.title}` placeholder="title")
         | 
-        select.select-option(name='language' value=`language`)
+        select.select-option(name='language')
           option(value='javascript') Javascript
+          option(value=`${snip.language}` selected) #{snip.language}
           option(value='html') Html
           option(value='css') Css
           option(value='ts') TypeScript
@@ -21,7 +22,7 @@ html
           option(value='node') Node
           option(value='mongo') Mongodb
         |
-        textarea.input-desc(type='text' name='description' value=`description` placeholder='description' )
+        textarea.input-desc(type='text' name='description' value=`${snip.description}` placeholder=`${snip.description}`) #{snip.description}
         |
         |
         button.btn-submit(type= "submit") Submit code
@@ -40,11 +41,10 @@ html
                 div.card.card-body #{snippet.description}
                   
               |
-            //- a.btn(href=`/snippets/${snippet.id}`) Edit
+            a.btn(href=`/${snippet.id}`) Edit
             //- form(action="/snippets/#{snippet.id}" method="post")
             //-     input(type="submit" value="Delete")
 
-           
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

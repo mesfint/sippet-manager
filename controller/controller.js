@@ -44,7 +44,7 @@ export const finOneSnippet = async (req, res) => {
           
       })
  }else{
-      res.render('indexOne', {
+      res.render('edit', {
           message:"Snippets retrieved", 
           type: 'success',
           snippets:response, 
@@ -136,7 +136,7 @@ export const updateSnippets = (req, res) => {
             type: "error",
           });
         } else {
-          res.render("includes/show_message", {
+          res.redirect("index", {
             message: "Snippet Updates",
             type: "success",
             snippet: response,
