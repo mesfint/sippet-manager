@@ -33,6 +33,9 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
       - NodeJs
       - Express
       - Mongodb Atlas
+
+## Methedology
+    -   SCRUM 
      
 ## Development
 
