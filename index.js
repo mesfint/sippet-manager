@@ -20,8 +20,6 @@ app.use(upload.array());
 // for parsing application/json
 app.use(bodyParser.json());
 
-// for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true }));
 //form-urlencoded
 
 app.use(bodyParser.urlencoded({ extended: false }));

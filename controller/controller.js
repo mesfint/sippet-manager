@@ -33,7 +33,6 @@ export const allSnippets = async (req, res) => {
 };
 //find a sinppet
 export const finOneSnippet = async (req, res) => {
-  
   Snippet.find((err, response) => {
     if(err){
       console.log('error happen', err)
@@ -92,7 +91,7 @@ export function create(req, res) {
 
 export async function getAll(req, res) {
   try {
-    const snipptes = await Snippet.find();
+    const snipptes = await Snippet.find().sort({ createdAt: -1 });
 
     //res.render("AllSnippets", {});
     res.send(snipptes);
@@ -142,11 +141,31 @@ export const updateSnippets = (req, res) => {
             snippet: response,
           });
         }
+      }
+    );
+  }
+};
+
+//
+//delete  a snippet
+export const deleteSnippet = (req, res) => {
+  Snippet.findOneAndRemove(req.params.id, (err, response) => {
+    if (err) {
+      res.render("show_message", {
+        message: "Snippet Deletion Error",
+        type: "error",
+      });
+    } else {
+      res.render("delete_message", {
+        message: "Snippet Deleted",
+        type: "success",
+        snippet: response,
       });
     }
-}
+  });
+};
 
-//Get All snippet 
+//Get All snippet
 
 /* export function getAll(req, res){
 

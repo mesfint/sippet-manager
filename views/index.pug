@@ -34,15 +34,18 @@ html
             h3 #{snippet.title}           
             p.lang #{snippet.language}
             div 
-              a.btn.btn-primary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+              a.btn.btn-secondary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
             div.collapse.multi-collapse(id=`m${snippet._id}`)
               pre.code-snippet.language-javascript
                 div.card.card-body #{snippet.description}
                   
               |
             a.btn(href=`/${snippet.id}`) Edit
-            //- form(action="/snippets/#{snippet.id}" method="post")
-            //-     input(type="submit" value="Delete")
+            //delete snippet from db
+            //- form(action=`/snippets/${snippet.id} method="post" `)
+            //-      input(type='submit', value='Delete') 
+      //-       a.btn.delete(data-doc=`/snippets/${snippet._id}`) Delete
+           
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
