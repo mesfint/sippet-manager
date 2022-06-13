@@ -2,6 +2,8 @@ extends ../layout
 block content 
   div.container.col-10
     h2(class="text-center") SNIPPET MANAGER
+    |
+    a(class="text-center btn btn-success p-2 m-1 mx-auto col-6 display:block"  href=`/create`) Create Your Snippet 
     ul.list-group
       each snippet in snippets
         li.list-group-item

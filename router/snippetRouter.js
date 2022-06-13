@@ -15,11 +15,11 @@ import {
 const router = express.Router();
 
 router.get("/", allSnippets);
-//router.get("/:id", finOneSnippet);
+router.get("/:id", finOneSnippet);
 
 //create snippet
 router.get("/create", createForm)
-//router.post("/create", create);
+router.post("/create", create);
 
 //get all snippets
 //router.get("/snippets", getAll);
@@ -29,7 +29,7 @@ router.get("/create", createForm)
 
 //Update Snippets
 
-router.put("/:id", updateSnippets);
+router.put("/edit/:id", updateSnippets);
 
 router.delete("/snippets/:id", deleteSnippet);
 

@@ -31,7 +31,7 @@ export const allSnippets = async (req, res) => {
     snippet: { title: "", description: "", language: "" },
   }); */
 };
-//find a sinppet
+//find a sinppet renders snippat form 
 export const finOneSnippet = async (req, res) => {
   Snippet.find((err, response) => {
     if(err){
@@ -76,12 +76,12 @@ export function create(req, res) {
           type: "error",
         });
       } else {
-        //res.redirect("/snippet");
-        res.render("includes/show_message", {
+        res.redirect("/");
+        /* res.render("includes/show_message", {
           message: "New snippet added",
           type: "success",
           snippet: response,
-        });
+        }); */
       }
     });
   }
@@ -138,11 +138,12 @@ export const updateSnippets = (req, res) => {
             type: "error",
           });
         } else {
-          res.redirect("pages/index", {
+          res.redirect('/')
+          /* res.render("/pages/index", {
             message: "Snippet Updates",
             type: "success",
             snippet: response,
-          });
+          }); */
         }
       }
     );
