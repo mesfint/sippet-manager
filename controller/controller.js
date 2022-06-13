@@ -3,26 +3,23 @@ import axios from "axios";
 
 export const allSnippets = async (req, res) => {
   Snippet.find((err, response) => {
-    if (err) {
-      console.log("error happen", err);
-      res.render("show_message", {
-        message: "No Snippet found",
-        type: "error",
-        snippets: [],
-      });
-    } else {
-      res.render("index", {
-        message: "Snippets retrieved",
-        type: "success",
-        snippets: response,
-        snip: {
-          title: "Try me",
-          description: "Amazing",
-          language: "JS",
-        },
-      });
-    }
-  });
+    if(err){
+      console.log('error happen', err)
+      res.render('includes/show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+ }else{
+      res.render('index', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response, 
+          snip:{title:'Try me', description:'Amazing', snippet: 'console.log'}
+      })
+ }
+  })
   /* try {
     const response = await axios.get("http://localhost:5000/snippets");
     snippets = await response.data;
@@ -37,22 +34,23 @@ export const allSnippets = async (req, res) => {
 //find a sinppet
 export const finOneSnippet = async (req, res) => {
   Snippet.find((err, response) => {
-    if (err) {
-      console.log("error happen", err);
-      res.render("show_message", {
-        message: "No Snippet found",
-        type: "error",
-        snippets: [],
-      });
-    } else {
-      res.render("indexOne", {
-        message: "Snippets retrieved",
-        type: "success",
-        snippets: response,
-        snip: response.filter((s) => s.id == req.params.id)[0],
-      });
-    }
-  });
+    if(err){
+      console.log('error happen', err)
+      res.render('includes/show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+ }else{
+      res.render('edit', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response, 
+          snip:response.filter(s => s.id == req.params.id)[0]
+      })
+ }
+  })
 };
 
 //create snippet
@@ -61,7 +59,7 @@ export function create(req, res) {
   const snippetInfo = req.body; //get the parsed information
 
   if (!snippetInfo.title || !snippetInfo.description || !snippetInfo.language) {
-    res.render("show_message", {
+    res.render("includes/show_message", {
       message: "Please fill in all fields",
       type: "error",
     });
@@ -73,17 +71,17 @@ export function create(req, res) {
     });
     newSnippet.save((err, response) => {
       if (err) {
-        res.render("show_message", {
+        res.render("includes/show_message", {
           message: "Error saving snippet to db",
           type: "error",
         });
       } else {
-        res.redirect("/index");
-        // res.render("show_message", {
-        //   message: "New snippet added",
-        //   type: "success",
-        //   snippet: response,
-        // });
+        //res.redirect("/snippet");
+        res.render("includes/show_message", {
+          message: "New snippet added",
+          type: "success",
+          snippet: response,
+        });
       }
     });
   }
@@ -117,7 +115,7 @@ export async function getSnippetsById(req, res) {
 export const updateSnippets = (req, res) => {
   const snippets = req.body;
   if (!snippets.title || !snippets.description || !snippets.language) {
-    res.render("show_message", {
+    res.render("includes/show_message", {
       message: "Please fill all fields",
       type: "error",
     });
@@ -132,13 +130,13 @@ export const updateSnippets = (req, res) => {
 
       (err, response) => {
         if (err) {
-          res.render("show_message", {
+          res.render("includes/show_message", {
             message: "Snippet Updates Error",
             type: "error",
           });
         } else {
-          res.render("show_message", {
-            message: "Snippet Updated",
+          res.redirect("index", {
+            message: "Snippet Updates",
             type: "success",
             snippet: response,
           });

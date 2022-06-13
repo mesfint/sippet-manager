@@ -27,7 +27,7 @@ router.get("/snippets/:id", getSnippetsById);
 
 //Update Snippets
 
-router.put("/snippets/:id", updateSnippets);
+router.put("/:id", updateSnippets);
 
 router.delete("/snippets/:id", deleteSnippet);
 
