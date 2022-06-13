@@ -15,7 +15,7 @@ import {
 const router = express.Router();
 
 router.get("/", allSnippets);
-router.get("/:id", finOneSnippet);
+router.get("/edit/:id", finOneSnippet);
 
 //create snippet
 router.get("/create", createForm)

@@ -3,10 +3,11 @@ block content
   div.container.col-10
     h2(class="text-center") SNIPPET MANAGER
     |
-    a(class="text-center btn btn-success p-2 m-1 mx-auto col-6 display:block"  href=`/create`) Create Your Snippet 
-    ul.list-group
+    div(class="text-center mb-3")
+      a(class=" btn btn-success p-2  mx-auto col-4 display:block"  href=`/create`) Create Your Snippet 
+    ul.list-group.bg-secondary.pt-4
       each snippet in snippets
-        li.list-group-item
+        li.list-group-item.bg-light
           h3 #{snippet.title}           
           p.lang #{snippet.language}
           div 
@@ -15,4 +16,5 @@ block content
               pre.code-snippet.language-javascript
               div.card.card-body #{snippet.description}
               |
-              a.btn(href=`/${snippet.id}`) Edit
+              a.btn.btn-outline-info.m-1(href=`/edit/${snippet.id}`) Edit
+              a.btn.btn-outline-danger(href=`/snippets/${snippet.id}`) Delete 
