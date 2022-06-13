@@ -38,13 +38,13 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
       - Tailwind/MUI
       - Styled Components
       
-  -  ####  Backend
+    ####  Backend
       - NodeJs
       - Express
       - Mongodb Atlas
 
-  - ####    template engine
-      -Pug
+   ####    template engine
+      -Pug,
       -Ejs
 
 ## Methedology
