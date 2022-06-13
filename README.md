@@ -10,9 +10,10 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
 
 ## Basic Features
 
-1.  ### Add/Edit/Remove snippets
+1.  ### CRUD Operation 
 
-    Snipets can be added  edited and removed from the app.
+    -Snipets can be added  edited and removed from the app.
+    -User Authentication(Admin/registered user)
 
 2.  ### Data Persistence
 
