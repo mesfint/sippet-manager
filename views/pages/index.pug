@@ -1,0 +1,16 @@
+extends ../layout
+block content 
+  div.container.col-10
+    h2(class="text-center") SNIPPET MANAGER
+    ul.list-group
+      each snippet in snippets
+        li.list-group-item
+          h3 #{snippet.title}           
+          p.lang #{snippet.language}
+          div 
+            a.btn.btn-secondary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+            div.collapse.multi-collapse(id=`m${snippet._id}`)
+              pre.code-snippet.language-javascript
+              div.card.card-body #{snippet.description}
+              |
+              a.btn(href=`/${snippet.id}`) Edit

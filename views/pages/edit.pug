@@ -6,7 +6,7 @@ html
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     link(rel="stylesheet", href="/css/style.css")
   body
-    h1.header Edit Snippet
+    h1.header Edit Snippet 
     
     div.container.col-10
       form(action="", method="post" class=" mx-auto" style="padding-left:60px;") 
@@ -28,23 +28,4 @@ html
         button.btn-submit(type= "submit") Submit code
         | 
        
-    div   
-      ul.list-group
-        each snippet in snippets
-          li.list-group-item
-            h3 #{snippet.title}           
-            p.lang #{snippet.language}
-            div 
-              a.btn.btn-primary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
-            div.collapse.multi-collapse(id=`m${snippet._id}`)
-              pre.code-snippet.language-javascript
-                div.card.card-body #{snippet.description}
-                  
-              |
-            a.btn(href=`/${snippet.id}`) Edit
-            //- form(action="/snippets/#{snippet.id}" method="post")
-            //-     input(type="submit" value="Delete")
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
