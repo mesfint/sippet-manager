@@ -34,16 +34,34 @@ html
             h3 #{snippet.title}           
             p.lang #{snippet.language}
             div 
-              a.btn.btn-primary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+              a.btn.btn-secondary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
             div.collapse.multi-collapse(id=`m${snippet._id}`)
               pre.code-snippet.language-javascript
                 div.card.card-body #{snippet.description}
                   
               |
             a.btn(href=`/${snippet.id}`) Edit
-            //- form(action="/snippets/#{snippet.id}" method="post")
-            //-     input(type="submit" value="Delete")
+            //delete snippet from db
+            //- form(action=`/snippets/${snippet.id} method="post" `)
+            //-      input(type='submit', value='Delete') 
+      //-       a.btn.delete(data-doc=`/snippets/${snippet._id}`) Delete
+           
 
+            
+      //- <script>
+      //- const delSnip = document.querySelector('a.delete');
+      //- delSnip.addEventListener('click', (e)=>{
+      //-   const endpoint = ` /snippets/${delSnip.dataset.doc}`;
+      //- fetch(endpoint,{
+      //-   method: 'DELETE',
+       
+      //- })
+      
+
+      //- })
+      //- </script>
+            
+            
                   
     
 

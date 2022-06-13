@@ -8,6 +8,7 @@ import {
   allSnippets,
   updateSnippets,
   finOneSnippet,
+  deleteSnippet,
 } from "../controller/controller.js";
 
 const router = express.Router();
@@ -27,6 +28,8 @@ router.get("/snippets/:id", getSnippetsById);
 //Update Snippets
 
 router.put("/snippets/:id", updateSnippets);
+
+router.delete("/snippets/:id", deleteSnippet);
 
 // router.get("/", (req, res) => {
 //   res.send("Initial Empty");
