@@ -29,6 +29,7 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
     
          -Only logged In members can uplaod Snippets
          -Admins can filterout irrelevant snippets and ban users
+         -Admin can hide some snippets
    
 
 ## Technologies Used
