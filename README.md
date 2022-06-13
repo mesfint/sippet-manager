@@ -1,4 +1,4 @@
-# Snippet Manager - Fullstack Project
+# Snippet Manager - Fullstack Project-MERN Stack
 
 ## About This Project
 
@@ -7,20 +7,28 @@ Snippet Manager is a useful tool for a daily and routine code  collection,A user
 ![Basic Mockup](https://github.com/mesfint/snippet-manager/blob/master/Snippet.png)
 
 
-
 ## Basic Features
 
 1.  ### CRUD Operation 
 
     -Snipets can be added  edited and removed from the app.
-    -User Authentication(Admin/registered user)
+ 
+     Snippets can be in the form of 
+    -Text
+    -Image upload
 
 2.  ### Data Persistence
 
-    Code snippets are stored in the the database the moment they are created and persisted as long as the user needs them.
+    -Code snippets are stored in the the database the moment they are created and persisted as long as the user needs them.
 
 3.  ### Filter Snippets
-    - Snippets can be searched and filtered based on given search term.
+    - Snippets can be searched and filtered based on a given search term(search by technology eg. php, js...)
+    
+
+4.    User Authentication(Admin/registered user)
+    
+         -Only logged In members can uplaod Snippets
+         -Admins can filterout irrelevant snippets and ban users
    
 
 ## Technologies Used
