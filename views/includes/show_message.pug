@@ -1,11 +1,10 @@
-html
-   head
-      title Snippet
-   body
-      if(type == "error")
-         h3(style = "color:red") #{message}
-      else
-         h1 New Snippet, 
-         h3 title: #{snippet.title}
-         p  description: #{snippet.description}  
-         p  language: #{snippet.language} added/updated!
+if(message == "")
+   if(type == "error")
+      h3(style = "color:red") #{message}
+   else
+      h1 New Snippet, 
+      h3 title: 
+      p  description: 
+      p  language:  added/updated!
+else 
+   p 

@@ -1,0 +1,24 @@
+extends ../layout
+block content 
+  div.container.col-10
+    h3(class="text-center") Edit Your snippet
+    form(action=`/edit/${snip.id}?_method=PUT`, method="post" class=" mx-auto" style="padding-left:60px;") 
+      input.input-title(type='text' name='title'  value=`${snip.title}` placeholder="title")
+      | 
+      select.select-option(name='language')
+        option(value='javascript') Javascript
+        option(value=`${snip.language}` selected) #{snip.language}
+        option(value='html') Html
+        option(value='css') Css
+        option(value='ts') TypeScript
+        option(value='react') ReactJS
+        option(value='node') Node
+        option(value='mongo') Mongodb
+      |
+      textarea.input-desc(type='text' name='description' value=`${snip.description}` placeholder=`${snip.description}`) #{snip.description}
+      |
+      |
+      button.btn-submit(type= "submit") Submit code
+      | 
+       
+    

@@ -3,6 +3,7 @@ import axios from "axios";
 import Snippet from "../model/snippet.js";
 import {
   create,
+  createForm,
   getSnippetsById,
   getAll,
   allSnippets,
@@ -14,20 +15,21 @@ import {
 const router = express.Router();
 
 router.get("/", allSnippets);
-router.get("/:id", finOneSnippet);
+router.get("/edit/:id", finOneSnippet);
 
 //create snippet
-router.post("/", create);
+router.get("/create", createForm)
+router.post("/create", create);
 
 //get all snippets
-router.get("/snippets", getAll);
+//router.get("/snippets", getAll);
 
 //get Snippet by Id
-router.get("/snippets/:id", getSnippetsById);
+//router.get("/snippets/:id", getSnippetsById);
 
 //Update Snippets
 
-router.put("/:id", updateSnippets);
+router.put("/edit/:id", updateSnippets);
 
 router.delete("/snippets/:id", deleteSnippet);
 

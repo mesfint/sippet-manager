@@ -12,7 +12,7 @@ export const allSnippets = async (req, res) => {
           
       })
  }else{
-      res.render('index', {
+      res.render('pages/index', {
           message:"Snippets retrieved", 
           type: 'success',
           snippets:response, 
@@ -26,12 +26,12 @@ export const allSnippets = async (req, res) => {
   } catch (error) {
     snippets = [];
   }
-  res.render("index", {
+  res.render("pages/index", {
     snippets: snippets,
     snippet: { title: "", description: "", language: "" },
   }); */
 };
-//find a sinppet
+//find a sinppet renders snippat form 
 export const finOneSnippet = async (req, res) => {
   Snippet.find((err, response) => {
     if(err){
@@ -43,7 +43,7 @@ export const finOneSnippet = async (req, res) => {
           
       })
  }else{
-      res.render('edit', {
+      res.render('pages/edit', {
           message:"Snippets retrieved", 
           type: 'success',
           snippets:response, 
@@ -76,15 +76,18 @@ export function create(req, res) {
           type: "error",
         });
       } else {
-        //res.redirect("/snippet");
-        res.render("includes/show_message", {
+        res.redirect("/");
+        /* res.render("includes/show_message", {
           message: "New snippet added",
           type: "success",
           snippet: response,
-        });
+        }); */
       }
     });
   }
+}
+export function createForm(req, res){
+    res.render('pages/create')
 }
 
 //Get All snippet
@@ -93,7 +96,7 @@ export async function getAll(req, res) {
   try {
     const snipptes = await Snippet.find().sort({ createdAt: -1 });
 
-    //res.render("AllSnippets", {});
+    //res.render("pages/AllSnippets", {});
     res.send(snipptes);
   } catch (error) {
     console.log(error);
@@ -135,11 +138,12 @@ export const updateSnippets = (req, res) => {
             type: "error",
           });
         } else {
-          res.redirect("index", {
+          res.redirect('/')
+          /* res.render("/pages/index", {
             message: "Snippet Updates",
             type: "success",
             snippet: response,
-          });
+          }); */
         }
       }
     );
@@ -151,12 +155,12 @@ export const updateSnippets = (req, res) => {
 export const deleteSnippet = (req, res) => {
   Snippet.findOneAndRemove(req.params.id, (err, response) => {
     if (err) {
-      res.render("show_message", {
+      res.render("includes/show_message", {
         message: "Snippet Deletion Error",
         type: "error",
       });
     } else {
-      res.render("delete_message", {
+      res.render("includes/show_message", {
         message: "Snippet Deleted",
         type: "success",
         snippet: response,
