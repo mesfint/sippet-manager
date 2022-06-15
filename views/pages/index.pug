@@ -1,17 +1,31 @@
 extends ../layout
 block content 
   div.container.col-10
-    h2(class="text-center") SNIPPET MANAGER
-    |
-    div(class="text-center mb-3")
-      a(class=" btn btn-success p-2  mx-auto col-4 display:block"  href=`/create`) Create Your Snippet 
-    ul.list-group.bg-secondary.pt-4
-      each snippet in snippets
-        li.list-group-item.bg-light
-          h3 #{snippet.title}           
-          p.lang #{snippet.language}
+    div(class="text-center mb-3 hero")
+      h1(class="h1-hero") Collect your favourite snippets in one place & save your precious time
+      p(class="p-hero") Be your snippet manager.
+      div(class="btn-group")
+        a(class=" btn btn-add-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Add your snippet
+        a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/create`) Sign up
+    div(class="search-container")
+      input(class="search-input" type="text" placeholder="Search..")
+      select.select-option(name='language' class="search-option")
+          option(value='select language') Select language
+          option(value='javascript') Javascript
+          option(value='html') Html
+          option(value='css') Css
+          option(value='ts') TypeScript
+          option(value='react') ReactJS
+          option(value='node') Node
+          option(value='mongo') Mongodb
+      a(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
+  ul.list-group.pt-4
+    each snippet in snippets
+      li.list-group-item.bg-light
+        h3(class="title") #{snippet.title}
+        p(class="language") #{snippet.language}
           div 
-            a.btn.btn-secondary(data-bs-toggle="collapse" href=`#m${snippet._id}`) code
+            a.btn(data-bs-toggle="collapse" class="btn-view-code" href=`#m${snippet._id}`) code
             div.collapse.multi-collapse(id=`m${snippet._id}`)
               pre.code-snippet.language-javascript
               small Description
