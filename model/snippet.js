@@ -1,18 +1,6 @@
-import mongoose from "mongoose";
-//connect remote database
-mongoose
-  .connect(
-    "mongodb+srv://user:user@cluster0.oeybl.mongodb.net/snippets?retryWrites=true&w=majority"
-  ,{},(err, data) => {
-    if(err){
-      console.log('Not connected')
-    }else{
-      console.log('Database connected')
-    }
-  })
+import db from "../db.js";
 
-
-const snippetSchema = new mongoose.Schema({
+const snippetSchema = new db.Schema({
   title: {
     type: String,
     required: true,
@@ -26,6 +14,10 @@ const snippetSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  snippet: {
+    type: String,
+    required: true,
+  },
 });
 
-export default mongoose.model("Snippet", snippetSchema);
+export default db.model("Snippet", snippetSchema);

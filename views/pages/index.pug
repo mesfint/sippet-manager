@@ -6,7 +6,7 @@ block content
       p(class="p-hero") Be your snippet manager.
       div(class="btn-group")
         a(class=" btn btn-add-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Add your snippet
-        a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/create`) Sign up
+        a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/register`) Sign up
     div(class="search-container")
       input(class="search-input" type="text" placeholder="Search..")
       select.select-option(name='language' class="search-option")
@@ -28,7 +28,10 @@ block content
             a.btn(data-bs-toggle="collapse" class="btn-view-code" href=`#m${snippet._id}`) code
             div.collapse.multi-collapse(id=`m${snippet._id}`)
               pre.code-snippet.language-javascript
+              small Description
               div.card.card-body #{snippet.description}
+              small Snippet
+              div.card.card-body #{snippet.snippet}
               |
               a.btn.btn-outline-info.m-1(href=`/edit/${snippet.id}`) Edit
               a.btn.btn-outline-danger(href=`/snippets/${snippet.id}`) Delete 

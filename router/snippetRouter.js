@@ -1,6 +1,5 @@
 import express from "express";
-import axios from "axios";
-import Snippet from "../model/snippet.js";
+
 import {
   create,
   createForm,
@@ -14,8 +13,9 @@ import {
 
 const router = express.Router();
 
+//localhost:5000
 router.get("/", allSnippets);
-router.get("/edit/:id", finOneSnippet);
+
 
 //create snippet
 router.get("/create", createForm)
@@ -29,9 +29,12 @@ router.post("/create", create);
 
 //Update Snippets
 
+router.get("/edit/:id", finOneSnippet);
+
 router.put("/edit/:id", updateSnippets);
 
 router.delete("/snippets/:id", deleteSnippet);
+
 
 // router.get("/", (req, res) => {
 //   res.send("Initial Empty");

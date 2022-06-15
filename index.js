@@ -5,6 +5,7 @@ import methodOverride  from 'method-override'
 import mongoose from "mongoose";
 
 import snippetRouter from "./router/snippetRouter.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 const upload = multer();
@@ -30,10 +31,12 @@ app.use(bodyParser.json());
 //to overrid PUT Method by POST
 app.use(methodOverride('_method'))
 
+/// routers 
+
+//User router  should come first 
+app.use("/", userRouter); 
+//snippet router
 app.use("/", snippetRouter);
-
-
-
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
