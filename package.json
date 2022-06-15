@@ -15,6 +15,7 @@
         "request": "^2.88.2"
     },
     "dependencies": {
+        "@primer/octicons-react": "^17.3.0",
         "axios": "^0.27.2",
         "bootstrap-icons": "^1.8.2",
         "method-override": "^3.0.0",

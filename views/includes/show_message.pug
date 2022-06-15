@@ -1,10 +1,8 @@
-if(message == "")
-   if(type == "error")
-      h3(style = "color:red") #{message}
-   else
-      h1 New Snippet, 
-      h3 title: 
-      p  description: 
-      p  language:  added/updated!
+if(message !== "")
+  if(type="error")
+    p(class="text-danger p-2 messages")  #{message}
+    
+  else
+    p(class="text-success p-2 messages") #{message}
 else 
-   p 
+ 

@@ -1,5 +1,4 @@
 import Snippet from "../model/snippet.js";
-import axios from "axios";
 
 export const allSnippets = async (req, res) => {
   Snippet.find((err, response) => {
@@ -58,8 +57,8 @@ export const finOneSnippet = async (req, res) => {
 export function create(req, res) {
   const snippetInfo = req.body; //get the parsed information
 
-  if (!snippetInfo.title || !snippetInfo.description || !snippetInfo.language) {
-    res.render("includes/show_message", {
+  if (!snippetInfo.title || !snippetInfo.description || !snippetInfo.language || !snippetInfo.snippet) {
+    res.render("pages/create", {
       message: "Please fill in all fields",
       type: "error",
     });
@@ -68,10 +67,11 @@ export function create(req, res) {
       title: snippetInfo.title,
       description: snippetInfo.description,
       language: snippetInfo.language,
+      snippet:snippetInfo.snippet
     });
     newSnippet.save((err, response) => {
       if (err) {
-        res.render("includes/show_message", {
+        res.render("pages/create", {
           message: "Error saving snippet to db",
           type: "error",
         });
@@ -86,6 +86,7 @@ export function create(req, res) {
     });
   }
 }
+// create form 
 export function createForm(req, res){
     res.render('pages/create')
 }
