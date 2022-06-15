@@ -13,7 +13,10 @@ block content
           option(value='node') Node
           option(value='mongo') Mongodb
         |
-        textarea.input-desc(type='text' class='p-2' name='description'  placeholder=`Description`)
+        
+        input.input-title(type='text' name='title'  placeholder="Description")
+        |
+        textarea.input-desc(type='text' class='p-2' name='description'  placeholder=`Code`)
         |
         |
         button.btn-submit(type= "submit") Submit code
