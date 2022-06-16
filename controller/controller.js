@@ -33,7 +33,6 @@ export const allSnippets = async (req, res) => {
 };
 //find a sinppet renders snippat form
 export const finOneSnippet = async (req, res) => {
-<<<<<<< HEAD
   Snippet.findById(req.params.id, (err, response) => {
     if(err){
       console.log('error happen', err)
@@ -53,25 +52,6 @@ export const finOneSnippet = async (req, res) => {
       })
  }
   })
-=======
-  Snippet.find((err, response) => {
-    if (err) {
-      console.log("error happen", err);
-      res.render("includes/show_message", {
-        message: "No Snippet found",
-        type: "error",
-        snippets: [],
-      });
-    } else {
-      res.render("pages/edit", {
-        message: "Snippets retrieved",
-        type: "success",
-        snippets: response,
-        snip: response.filter((s) => s.id == req.params.id)[0],
-      });
-    }
-  });
->>>>>>> master
 };
 
 //create snippet
