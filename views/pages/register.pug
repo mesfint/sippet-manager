@@ -1,9 +1,9 @@
 extends ../layout
 block content
-  div(class="mx-auto col-6 pt-3 ")
+  div(class="mx-auto col-8 pt-3")
     h4 Sign up
     include ../includes/show_message
-    form(action="/register", method="post")
+    form(action="/register", method="post" style=" width:100%; margin:auto;")
       input.input(type='text' name='firstname' style="width:42%;" class=" m-2  p-2 rounded" placeholder="First name  ")
       input.input(type='text' name='lastname' style="width:42%;" class=" p-2 m-2 rounded" placeholder="Last name  ")
       input.input(type='text' name='email' class="col-10 m-2 p-2 rounded" placeholder="email * ")

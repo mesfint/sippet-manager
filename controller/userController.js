@@ -80,7 +80,7 @@ export function login(req, res){
           } else if (!isMatch) {
             //callback({error: true})
             res.render("pages/login", {
-              message: "password dosnt match",
+              message: "Password dosnt match",
               type: "error",
             });
           } else {
