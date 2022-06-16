@@ -1,26 +1,37 @@
 extends ../layout
 block content 
-  div.container.col-10
+  div.wrapper
     div(class="text-center mb-3 hero")
       h1(class="h1-hero") Collect your favourite snippets in one place & save your precious time
       p(class="p-hero") Be your snippet manager.
       div(class="btn-group")
-        a(class=" btn btn-add-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Add your snippet
+        a(class=" btn btn-add-snippet"  href=`/create`) Add your snippet
         a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/register`) Sign up
-    div(class="search-container")
-      input(class="search-input" type="text" placeholder="Search..")
-      select.select-option(name='language' class="search-option")
-          option(value='select language') Select language
-          option(value='javascript') Javascript
-          option(value='html') Html
-          option(value='css') Css
-          option(value='ts') TypeScript
-          option(value='react') ReactJS
-          option(value='node') Node
-          option(value='mongo') Mongodb
-      a(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
-  
-  ul.list-group.pt-1
+    div(class="container-fluid")
+        form(class="d-flex ")
+          input(class="form-control me-2  " type="search" placeholder="Search" aria-label="Search")
+          div(name='language' class="dropdown")
+            button(class="btn  dropdown-toggle me-2 select-option" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false") Select language
+              ul(class="dropdown-menu " aria-labelledby="dropdownMenuButton2")
+                li  
+                  a(class ="dropdown-item " href="#") Select Language
+                li
+                  a(class ="dropdown-item " href='#') Javascript
+                li
+                  a(class ="dropdown-item " href='#') HTML
+                li
+                  a(class ="dropdown-item " href='#') CSS
+                li
+                  a(class ="dropdown-item " href='#') Typescript
+                li
+                  a(class ="dropdown-item " href='#') ReactJs
+                li
+                  a(class ="dropdown-item " href='#') NodeJs
+                li
+                  a(class ="dropdown-item " href='#') MongoDB
+
+          button(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
+  ul.list-group.pt-4
     each snippet in snippets
       li.list-group-item.bg-light
         h3(class="title") #{snippet.title}

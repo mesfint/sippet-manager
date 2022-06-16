@@ -12,6 +12,36 @@ p {
     text-align: center;
 }
 
+.logo {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #333;
+    margin-left: 2px;
+    padding: 0;
+}
+
+.logo-img {
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #333;
+    margin-right: 10px;
+    padding: 0;
+}
+
+.signup-link {
+    border: 1px solid #4D519D;
+    border-radius: 8px;
+    padding: 5px;
+}
+
 .input {
     width: 86%;
     border: 1px solid #ccc;
@@ -49,7 +79,6 @@ p {
     margin-bottom: 10px;
 }
 
-
 .lang {
     font-size: medium;
     font-weight: 300;
@@ -57,16 +86,9 @@ p {
 }
 
 .select-option {
-    width: 50%;
-    height: 40px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1em;
-    font-weight: 300;
     color: #333;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
 }
 
 .list-group-item {
@@ -166,7 +188,7 @@ p {
 }
 
 .btn-search-snippet {
-    width: 22%;
+    width: 10%;
     background: #4D519D;
     border-radius: 10px;
     color: #FFFFFF;
@@ -221,8 +243,8 @@ p {
     font-size: 20px;
     font-weight: 200;
     background-color: #4D519D;
-    color:white;
-    margin: 2vh 4rem ;
+    color: white;
+    margin: 2vh 4rem;
     cursor: pointer;
     color: #FFFFFF;
     border: none;
@@ -236,11 +258,13 @@ p {
     text-decoration: none;
 }
 
-.container {
-    padding-top: 20px;
+.wrapper {
+    width: 98%;
+    margin: 0 auto;
+    /* padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
-   
+    margin-bottom: 50px; */
     /*  display: flex; */
     /* flex-direction: column;
     max-width: 1050px;
