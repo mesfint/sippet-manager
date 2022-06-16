@@ -17,7 +17,7 @@ const snippetSchema = new db.Schema({
   snippet: {
     type: String,
     required: true,
-  },
+  }
 });
 
 export default db.model("Snippet", snippetSchema);

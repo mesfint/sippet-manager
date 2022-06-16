@@ -26,7 +26,19 @@ p {
 
 .input-desc {
     width: 86%;
-    height: 200px;
+    height: 56px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    font-family: 'Syncopate', sans-serif;
+    color: #333;
+    margin: 0;
+    /* padding: 10px; */
+    margin-bottom: 10px;
+}
+.input-snippet {
+    width: 86%;
+    height: 112px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
@@ -64,7 +76,6 @@ p {
     background: rgba(217, 217, 217, 0.26);
     border-left: 3px solid #d4d5f7;
 }
-
 .hero {
     background: linear-gradient(135deg, #5961F9 0%, #EE9AE5 100%);
     border-radius: 40px 40px 153px 40px;
@@ -123,18 +134,20 @@ p {
 }
 
 .search-container {
+   
     display: flex;
     flex-direction: row;
-    max-width: 100%;
+    max-width: 96%;
+    margin:auto;
     justify-content: space-between;
-    padding: 2rem 8rem;
+    padding: 4vh 4rem;
     /* margin: 2rem 0; */
 }
 
 .search-input {
     background: rgba(217, 217, 217, 0.66);
     border-radius: 10px;
-    width: 56%;
+    width: 52%;
     margin-right: 10px;
     border: none;
     padding: 10px;
@@ -145,7 +158,7 @@ p {
     background: #FFFFFF;
     border: 1px solid rgba(130, 231, 253, 0.62);
     border-radius: 10px;
-    width: 20%;
+    width: 24%;
     border-radius: 10px;
     margin-right: 10px;
     padding: 10px;
@@ -153,7 +166,7 @@ p {
 }
 
 .btn-search-snippet {
-    width: 20%;
+    width: 22%;
     background: #4D519D;
     border-radius: 10px;
     color: #FFFFFF;
@@ -227,7 +240,7 @@ p {
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
-    margin-bottom: 50px;
+   
     /*  display: flex; */
     /* flex-direction: column;
     max-width: 1050px;

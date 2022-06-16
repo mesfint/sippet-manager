@@ -19,19 +19,21 @@ block content
           option(value='node') Node
           option(value='mongo') Mongodb
       a(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
-  ul.list-group.pt-4
+  
+  ul.list-group.pt-1
     each snippet in snippets
       li.list-group-item.bg-light
         h3(class="title") #{snippet.title}
         p(class="language") #{snippet.language}
           div 
-            a.btn(data-bs-toggle="collapse" class="btn-view-code" href=`#m${snippet._id}`) code
-            div.collapse.multi-collapse(id=`m${snippet._id}`)
+            a.btn(data-bs-toggle="collapse" class="btn-view-code" href=`#m${snippet.id}`) code
+            div.collapse.multi-collapse(id=`m${snippet.id}`)
               pre.code-snippet.language-javascript
-              small Description
-              div.card.card-body #{snippet.description}
-              small Snippet
+              small Description : 
+              div 
+               p #{snippet.description}
+              small Snippet : 
               div.card.card-body #{snippet.snippet}
               |
               a.btn.btn-outline-info.m-1(href=`/edit/${snippet.id}`) Edit
-              a.btn.btn-outline-danger(href=`/snippets/${snippet.id}`) Delete 
+              a.btn.btn-outline-danger(href="/" onclick=`handleDelete('${snippet.id}')`) Delete 

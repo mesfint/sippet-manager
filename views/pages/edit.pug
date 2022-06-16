@@ -1,8 +1,8 @@
 extends ../layout
 block content 
-  div(class="mx-auto col-8 p-4 ")
+  div(class="mx-auto col-10 p-4 ")
     h3(class="text-center") Edit Your snippet
-    form(action=`/edit/${snip.id}?_method=PUT`, method="post" style="padding-left:10rem; width:90%;" )
+    form(action=`/edit/${snip.id}?_method=PUT` method="post" style="padding-left:10rem; width:90%;")
       input.input(type='text' name='title'  value=`${snip.title}` placeholder="title" class="p-2 rounded w-100 mx-auto")
       | 
       select.select-option(name='language')
@@ -16,10 +16,10 @@ block content
         option(value='mongo') Mongodb
       |
       |
-      input.input(type='text' name='description'  value=`${snip.title}` placeholder="Description" class="p-2 rounded w-100 mx-auto")
+      input.desc(type='text' name='description'  value=`${snip.description}` placeholder="Description" class="p-2 rounded w-100 mx-auto")
       |
       |
-      textarea.input-desc(type='text' name='description' class="w-100 mx-auto p-2 " value=`${snip.description}` placeholder=`${snip.description}`) #{snip.description}
+      textarea.input-snippet(type='text' name='snippet' class="w-100 mx-auto p-2 " value=`${snip.snippet}` placeholder='snippet') #{snip.snippet}
       |
       |
       button.btn-submit(type= "submit" class="w-100 mx-auto p-2 ") Submit code
