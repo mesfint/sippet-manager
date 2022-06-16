@@ -1,5 +1,5 @@
 import db from "../db.js";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 const saltrounds = 10;
 //connection string to  remote database which is defined in db.js file
@@ -37,7 +37,7 @@ const userSchema = new db.Schema({
 
 userSchema.pre('save', function(next){
   const user = this
-  
+
   if(this.isModified('password') || this.isNew){
     bcrypt.genSalt(saltrounds, function(saltErr, salt){
       
@@ -54,12 +54,15 @@ userSchema.pre('save', function(next){
   } 
 })
 
-userSchema.methods.comparePassword = (candidatePassword, cb) => {
+// N.BBB the assigned function should 
+// not be fat arrow function since it has issue regarding using this key word here
+
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if(err){
       return cb(err)
     }
-    cd(null, isMatch)
+    cb(null, isMatch)
   })
 }
 

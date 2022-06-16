@@ -3,10 +3,10 @@ block content
   div(class="mx-auto col-8 p-3 ")
     h4() Login
     include ../includes/show_message
-    form(action="#" method="post" style=" width:100%; margin:auto;")
+    form(action="/login" method="post" style=" width:100%; margin:auto;")
       input.input(type='text' name='email' class="w-100 mx-auto p-2 rounded"  placeholder="email * ")
       input.input(type='password' name='password' class="w-100 mx-auto p-2 rounded"   placeholder="passord * ")
-      a(class="btn p-2" href="#" style="background-color:#4D519D;color:white; width:100%;") Login
+      button(class="btn p-2" type="submit" style="background-color:#4D519D;color:white; width:100%;") Login
       a(class="btn p-2 mt-2" href="/register" style="background-color:#F8ADDA;color:white; width:100%;") Create new Acount
       h6(class="p-3") ––––––––––––––––––––––––––––––––– Or continue with –––––––––––––––––––––––––––
 
