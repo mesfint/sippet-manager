@@ -23,3 +23,23 @@ function handleDelete(id){
     .catch(error => console.log(error))
 
 }
+//handle Theme to dark/sun mode
+function handleTheme(){
+    
+    let body =  document.getElementsByTagName("body")[0].style.background;
+   let header = document.getElementsByClassName("dark");
+   let inputs = document.getElementsByTagName("input");
+   let lis = document.getElementsByTagName("li");
+   
+   //body.style.background = body.style.background != 'black' ? 'black' : '';
+   //body.style = "background:black; color:white"
+   for(let i = 0; i < header.length; i++){
+     body !== 'black' ? header[i].style = "background:black; color:white" : header[i].style  =  ''
+   }
+   for(let i = 0; i < inputs.length; i++){
+    body !== 'black' ? inputs[i].style = "background:#24292F; color:white" : inputs[i].style  =  ''
+  }
+  for(let i = 0; i < lis.length; i++){
+    body !== 'black' ? lis[i].style = "background:#24292F; color:white" : lis[i].style  =  ''
+  }
+}

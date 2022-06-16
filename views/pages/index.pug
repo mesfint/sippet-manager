@@ -1,6 +1,6 @@
 extends ../layout
 block content 
-  div.wrapper
+  div.wrapper.dark
     div(class="text-center mb-3 hero")
       h1(class="h1-hero") Collect your favourite snippets in one place & save your precious time
       p(class="p-hero") Be your snippet manager.
@@ -33,7 +33,7 @@ block content
           button(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
   ul.list-group.pt-4
     each snippet in snippets
-      li.list-group-item.bg-light
+      li.list-group-item.m-2
         h3(class="title") #{snippet.title}
         p(class="language") #{snippet.language}
           div 
