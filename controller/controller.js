@@ -2,26 +2,24 @@ import Snippet from "../model/snippet.js";
 
 export const allSnippets = async (req, res) => {
   Snippet.find((err, response) => {
-    if (err) {
-      console.log("error happen", err);
-      res.render("includes/show_message", {
-        message: "No Snippet found",
-        type: "error",
-        snippets: [],
-      });
-    } else {
-      res.render("pages/index", {
-        message: "Snippets retrieved",
-        type: "success",
-        snippets: response,
-        snip: {
-          title: "Try me",
-          description: "Amazing",
-          snippet: "console.log",
-        },
-      });
+    if(err){
+      console.log('error happen', err)
+      res.render('includes/show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+      
+    }else{
+      res.render('pages/index', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response.sort().reverse(), 
+          snip:{title:'Try me', description:'Amazing', snippet: 'console.log'}
+      })
     }
-  });
+  })
   /* try {
     const response = await axios.get("http://localhost:5000/snippets");
     snippets = await response.data;
@@ -35,6 +33,27 @@ export const allSnippets = async (req, res) => {
 };
 //find a sinppet renders snippat form
 export const finOneSnippet = async (req, res) => {
+<<<<<<< HEAD
+  Snippet.findById(req.params.id, (err, response) => {
+    if(err){
+      console.log('error happen', err)
+      res.render('includes/show_message', {
+          message:'No Snippet found',
+          type:'error',
+          snippets:[],
+          
+      })
+ }else{
+      res.render('pages/edit', {
+          message:"Snippets retrieved", 
+          type: 'success',
+          snippets:response, 
+          //snip:response.filter(s => s.id == req.params.id)[0]
+          snip:response,
+      })
+ }
+  })
+=======
   Snippet.find((err, response) => {
     if (err) {
       console.log("error happen", err);
@@ -52,6 +71,7 @@ export const finOneSnippet = async (req, res) => {
       });
     }
   });
+>>>>>>> master
 };
 
 //create snippet
@@ -76,7 +96,9 @@ export function create(req, res) {
       language: snippetInfo.language,
       snippet: snippetInfo.snippet,
     });
+
     newSnippet.save((err, response) => {
+     // console.log(ObjectId(`${response.id}`).getTimestamp(), 'timestamp id')
       if (err) {
         res.render("pages/create", {
           message: "Error saving snippet to db",
@@ -102,7 +124,7 @@ export function createForm(req, res) {
 
 export async function getAll(req, res) {
   try {
-    const snipptes = await Snippet.find().sort({ createdAt: -1 });
+    const snipptes = await Snippet.find().sort({ createdAt: 1 });
 
     //res.render("pages/AllSnippets", {});
     res.send(snipptes);
@@ -125,7 +147,7 @@ export async function getSnippetsById(req, res) {
 //update snippets
 export const updateSnippets = (req, res) => {
   const snippets = req.body;
-  if (!snippets.title || !snippets.description || !snippets.language) {
+  if (!snippets.title || !snippets.description || !snippets.language || !snippets.snippet) {
     res.render("includes/show_message", {
       message: "Please fill all fields",
       type: "error",
@@ -137,6 +159,7 @@ export const updateSnippets = (req, res) => {
         title: snippets.title,
         description: snippets.description,
         language: snippets.language,
+        snippet: snippets.snippet,
       },
 
       (err, response) => {
@@ -161,18 +184,14 @@ export const updateSnippets = (req, res) => {
 //
 //delete  a snippet
 export const deleteSnippet = (req, res) => {
-  Snippet.findOneAndRemove(req.params.id, (err, response) => {
+  Snippet.findByIdAndRemove(req.params.id, (err, response) => {
     if (err) {
-      res.render("includes/show_message", {
+      res.render("pages/index", {
         message: "Snippet Deletion Error",
         type: "error",
       });
     } else {
-      res.render("includes/show_message", {
-        message: "Snippet Deleted",
-        type: "success",
-        snippet: response,
-      });
+      res.redirect("pages/index");
     }
   });
 };

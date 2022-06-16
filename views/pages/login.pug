@@ -1,16 +1,15 @@
 extends ../layout
 block content
-  div(class="mx-auto col-6 pt-3 ")
-    h4 Login
-    
+  div(class="mx-auto col-8 p-3 ")
     include ../includes/show_message
+    h4() Login
 
-    form(action="#" method="post")
-      input.input(type='text' name='email' class="col-10 m-2 p-2 rounded" placeholder="email * ")
-      input.input(type='password' name='password' class="col-10 m-2 p-2 rounded"  placeholder="passord * ")
+    form(action="#" method="post" style=" width:100%; margin:auto;")
+      input.input(type='text' name='email' class="w-100 mx-auto p-2 rounded"  placeholder="email * ")
+      input.input(type='password' name='password' class="w-100 mx-auto p-2 rounded"   placeholder="passord * ")
       
 
-      a(class="btn col-10 m-2" href="#" style="background-color:#4D519D;color:white") Login
+      a(class="btn p-2" href="#" style="background-color:#4D519D;color:white; width:100%;") Login
       a(class="btn col-10 m-2" href="#" style="background-color:#F8ADDA;color:white") Create new Acount
       h6(class="p-3") ––––––––––––––––––– Or continue with  ––––––––––––––––
 
