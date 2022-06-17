@@ -1,26 +1,24 @@
 div.header(class="p-2 dark text-secondary")
   nav(class="navbar navbar-expand-lg navbar-light dark")
-    div(class="container-fluid dark")
-      a(class="navbar-brand p-10 logo" href="/") 
-        img(src="../images/logo.svg", alt="" class="logo-img dark") 
-        span(class="logo-text dark") Snippets.
-      button(class="navbar-toggler dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
-        span(class="navbar-toggler-icon")
-      div(class="navbar-collapse collapse" id="navbarNav")
-        ul(class="navbar-nav dark")
-          li(class="nav-item dark")
-            a(class="nav-link dark" href="/") Home
-          li(class="nav-item")
-            a(class="nav-link dark" href="/")  Snippets
-          li(class="nav-item")
-            a(class="nav-link dark" href="/create") Add snippets
-        div(class="navbar-collapse")
-          div(class="col-10 dark ")              
-            <i class='fas fa-sun' style='font-size:24px; color:orange;' onclick='handleTheme()'></i>
-          ul(class="navbar-nav dark")
-            li(class="nav-item")
-              a(class="nav-link dark" href="/login") Login
-            li(class="nav-item dark")
-              a(class="nav-link signup-link dark" href="/register") signup
+    a(class="navbar-brand p-10 logo" href="/") 
+      img(src="../images/logo.svg", alt="" class="logo-img dark") 
+      span(class="logo-text dark") Snippets.
+    button(class="navbar-toggler dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+      span(class="navbar-toggler-icon")
+    div(class="navbar-collapse collapse "  id="navbarNav")
+      ul(class="navbar-nav dark")
+        li(class="nav-item dark")
+          a(class="nav-link dark" href="/") Home
+        li(class="nav-item")
+          a(class="nav-link dark" href="/")  Snippets
+        li(class="nav-item")
+          a(class="nav-link dark" href="/create") Add snippets
+      div(class="dark d-flex flex-row align-items-center justify-content-end" style="margin-left:18%; width:48%;")
+        <i class='fas fa-sun mx-3' style='font-size:24px; color:orange;' onclick='handleTheme()'></i> 
+        a(class="nav-link signup-link dark mx-1" href="/login") Login
+        a(class="nav-link signup-link dark mx-1" href="/register") signup  
+    
+       
+            
                     
           
