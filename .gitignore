@@ -1,3 +1,4 @@
 /node_modules
 /test.js
 /views/index2.pug
+/views/includes/header1.pug
