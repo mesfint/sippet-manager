@@ -117,8 +117,9 @@ export function login(req, res){
           } else {
             //callback({success: true})
             //set user as a session
-            if(!req.session.logout && !req.session.user){
+            if(req.session.logout && !req.session.user){
               req.session.user = user;
+              req.session.logout = false
            } 
             res.render("pages/login", {
               message: "You are successfully logged in! Welcome " + user.email,
@@ -136,10 +137,6 @@ export function logout(req, res){
   if(req.session.user && !req.session.logout){
     req.session.user = null
     req.session.logout = true
-    res.redirect('/', {
-      message:"Your are successfully logout",
-      type:'success',
-      user:null
-    })
+    res.redirect("pages/index")
   }
 }

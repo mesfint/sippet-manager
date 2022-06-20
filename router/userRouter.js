@@ -10,12 +10,13 @@ userRouter.get('/register', registerForm)
 userRouter.post('/register', register)
 
 
-//login form 
+userRouter.post('/logout', logout)
 
+//login form 
 userRouter.get('/login', loginForm)
 userRouter.post('/login', login)
 //userRouter.post('/login', loginForm)
 
-userRouter.post('/logout', logout)
+
 
 export default userRouter
