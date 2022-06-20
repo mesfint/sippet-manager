@@ -1,0 +1,15 @@
+extends ../layout
+block content 
+  div.wrapper.dark
+    table.table.table-dark
+      thead
+        tr
+          th(scope="col") User Name 
+          th(scope="col") Email 
+      tbody 
+      each user in users
+        tr 
+          td #{user.username}
+          td #{user.email}
+    
+      

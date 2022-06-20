@@ -9,9 +9,9 @@ block content
         a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/register`) Sign up
     div(class="container-fluid")
         form(class="d-flex ")
-          input(class="form-control me-2  " type="search" placeholder="Search" aria-label="Search")
-          div(name='language' class="dropdown")
-            button(class="btn  dropdown-toggle me-2 select-option" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false") Select language
+          input(class="form-control me-2 w-50 " type="search" placeholder="Search" aria-label="Search")
+          div(name='language' class="dropdown w-25")
+            button(class="btn  dropdown-toggle me-2   select-option" style="width:98%" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false") Select language
               ul(class="dropdown-menu " aria-labelledby="dropdownMenuButton2")
                 li  
                   a(class ="dropdown-item " href="#") Select Language
@@ -30,7 +30,7 @@ block content
                 li
                   a(class ="dropdown-item " href='#') MongoDB
 
-          button(class=" btn btn-search-snippet  p-2  mx-auto col-4 display:block"  href=`/create`) Search
+          button(class=" btn btn-search-snippet  p-2 w-25  mx-auto  display:block"  href=`/create`) Search
   ul.list-group.pt-4
     each snippet in snippets
       li.list-group-item.m-2

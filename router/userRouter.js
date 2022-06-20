@@ -1,9 +1,10 @@
 import express from "express";
-
-import { register, login, loginForm, registerForm } from '../controller/userController.js'
+import { register, getAll, login, loginForm, registerForm } from '../controller/userController.js'
+import user from "../model/user.js";
 
 const userRouter = express.Router();
 
+userRouter.get('/users', getAll)
 //register form 
 userRouter.get('/register', registerForm)
 userRouter.post('/register', register)

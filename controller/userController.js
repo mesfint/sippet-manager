@@ -1,6 +1,27 @@
 import User from "../model/user.js";
 
-
+//get All users 
+export function getAll(req, res){
+  User.find((err, response) => {
+    if(err){
+      console.log('error happen', err)
+      res.render('includes/show_message', {
+          message:'No User found',
+          type:'error',
+          snippets:[],
+          
+      })
+      
+    }else{
+      res.render('pages/users', {
+          message:"Persons retrieved", 
+          type: 'success',
+          users:response.sort().reverse(), 
+          user:{title:'Try me', description:'Amazing', snippet: 'console.log'}
+      })
+    }
+  })
+}
 // login register 
 export function registerForm(req, res){
   res.render('pages/register')
@@ -14,33 +35,42 @@ export function loginForm(req, res){
 export function register(req, res) {
     const userInfo = req.body; //get the parsed information
   
-    if (!userInfo.email || !userInfo.password ) {
+    if (!userInfo.email || !userInfo.password || !userInfo.confirm_password ) {
       res.render("pages/register", {
         message: "Please fill email, password , and confirm password fields",
         type: "error",
       });
     } else {
-      const newUser = new User({
-        email: userInfo.email,
-        password: userInfo.password,
-      });
-      newUser.save((err, response) => {
-        if (err) {
-          console.log(err, 'error in saving person')
-          res.render("includes/show_message", {
-            message: "Error saving user to db",
-            type: "error",
-          });
-        } else {
-          console.log(response, 'success in saving user')
-          res.redirect("/");
-          /* res.render("includes/show_message", {
-            message: "New user added",
-            type: "success",
-            user: response,
-          }); */
-        }
-      });
+      if(userInfo.password !== userInfo.confirm_password){
+        res.render("pages/register", {
+          message: "Password doesn't match",
+          type: "error",
+        });
+      }else{
+
+        const newUser = new User({
+          email: userInfo.email,
+          password: userInfo.password,
+        });
+        newUser.save((err, response) => {
+          if (err) {
+            console.log(err, 'error in saving person')
+            res.render("includes/show_message", {
+              message: "Error saving user to db",
+              type: "error",
+            });
+          } else {
+            console.log(response, 'success in saving user')
+            res.redirect("/");
+            /* res.render("includes/show_message", {
+              message: "New user added",
+              type: "success",
+              user: response,
+            }); */
+          }
+          
+        });
+    }
     }
   }
 
@@ -80,7 +110,7 @@ export function login(req, res){
           } else if (!isMatch) {
             //callback({error: true})
             res.render("pages/login", {
-              message: "Password dosnt match",
+              message: "Password dosn't match",
               type: "error",
             });
           } else {
