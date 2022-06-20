@@ -7,7 +7,7 @@ block content
       div(class="btn-group")
         a(class=" btn btn-add-snippet"  href=`/create`) Add your snippet
         a(class=" btn btn-sign-up p-2  mx-auto col-4 display:block"  href=`/register`) Sign up
-    div(class="container-fluid")
+    div(class="container-fluid m-2")
         form(class="d-flex ")
           input(class="form-control me-2 w-50 " type="search" placeholder="Search" aria-label="Search")
           div(name='language' class="dropdown w-25")
@@ -31,6 +31,8 @@ block content
                   a(class ="dropdown-item " href='#') MongoDB
 
           button(class=" btn btn-search-snippet  p-2 w-25  mx-auto  display:block"  href=`/create`) Search
+  
+  include ../includes/show_message
   ul.list-group.pt-4
     each snippet in snippets
       li.list-group-item.m-2

@@ -1,15 +1,20 @@
 extends ../layout
 block content 
   div.wrapper.dark
-    table.table.table-dark
-      thead
+    table.table.table-striped
+      thead.bg-dark.text-white
         tr
           th(scope="col") User Name 
           th(scope="col") Email 
+          th(scope="col") Snippets
+          th(scope="col") Action
       tbody 
       each user in users
         tr 
           td #{user.username}
           td #{user.email}
+          td #{user.snippets}
+          td 
+            a.btn.btn-danger(href="#") BAN
     
       

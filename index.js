@@ -1,6 +1,8 @@
 import bodyParser from "body-parser"; //For parsing JSON and url-encoded data)
 import multer from "multer"; //For handling file uploads
 import express from "express";
+import cookieParser from "cookie-parser";
+import session from "express-session";
 import methodOverride  from 'method-override'
 import mongoose from "mongoose";
 
@@ -31,6 +33,9 @@ app.use(bodyParser.json());
 //to overrid PUT Method by POST
 app.use(methodOverride('_method'))
 
+//cookies and sessions
+app.use(cookieParser());
+app.use(session({secret: "Shh, its a secret!"}));
 /// routers 
 
 //User router  should come first 

@@ -26,56 +26,57 @@ export function getAll(req, res){
 export function registerForm(req, res){
   res.render('pages/register')
 }
+
+//register user 
+export function register(req, res) {
+  const userInfo = req.body; //get the parsed information
+
+  if (!userInfo.email || !userInfo.password || !userInfo.confirm_password ) {
+    res.render("pages/register", {
+      message: "Please fill email, password , and confirm password fields",
+      type: "error",
+    });
+  } else {
+    if(userInfo.password !== userInfo.confirm_password){
+      res.render("pages/register", {
+        message: "Password doesn't match",
+        type: "error",
+      });
+    }else{
+
+      const newUser = new User({
+        email: userInfo.email,
+        password: userInfo.password,
+      });
+      newUser.save((err, response) => {
+        if (err) {
+          console.log(err, 'error in saving person')
+          res.render("includes/show_message", {
+            message: "Error saving user to db",
+            type: "error",
+          });
+        } else {
+          console.log(response, 'success in saving user')
+          res.redirect("/");
+          /* res.render("includes/show_message", {
+            message: "New user added",
+            type: "success",
+            user: response,
+          }); */
+        }
+        
+      });
+  }
+  }
+}
+
+
 // login form 
 export function loginForm(req, res){
     res.render('pages/login')
 }
 
-//register user 
-export function register(req, res) {
-    const userInfo = req.body; //get the parsed information
-  
-    if (!userInfo.email || !userInfo.password || !userInfo.confirm_password ) {
-      res.render("pages/register", {
-        message: "Please fill email, password , and confirm password fields",
-        type: "error",
-      });
-    } else {
-      if(userInfo.password !== userInfo.confirm_password){
-        res.render("pages/register", {
-          message: "Password doesn't match",
-          type: "error",
-        });
-      }else{
-
-        const newUser = new User({
-          email: userInfo.email,
-          password: userInfo.password,
-        });
-        newUser.save((err, response) => {
-          if (err) {
-            console.log(err, 'error in saving person')
-            res.render("includes/show_message", {
-              message: "Error saving user to db",
-              type: "error",
-            });
-          } else {
-            console.log(response, 'success in saving user')
-            res.redirect("/");
-            /* res.render("includes/show_message", {
-              message: "New user added",
-              type: "success",
-              user: response,
-            }); */
-          }
-          
-        });
-    }
-    }
-  }
-
 //login in user 
-
 export function login(req, res){
   const { email, password } = req.body
   console.log(email, password)
@@ -115,6 +116,10 @@ export function login(req, res){
             });
           } else {
             //callback({success: true})
+            //set user as a session
+            if(!req.session.logout && !req.session.user){
+              req.session.user = user;
+           } 
             res.render("pages/login", {
               message: "You are successfully logged in! Welcome " + user.email,
               type: "success",
@@ -123,6 +128,18 @@ export function login(req, res){
           }
         })
       }
+    })
+  }
+}
+
+export function logout(req, res){
+  if(req.session.user && !req.session.logout){
+    req.session.user = null
+    req.session.logout = true
+    res.redirect('/', {
+      message:"Your are successfully logout",
+      type:'success',
+      user:null
     })
   }
 }

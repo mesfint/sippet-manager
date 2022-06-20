@@ -1,5 +1,5 @@
 function clearMessage(){
-    console.log('yenon neger message')
+    console.log('yehon neger message lak')
    let messages =  document.getElementsByClassName('messages')
    setTimeout(() => {
        messages.forEach(element => {
@@ -9,7 +9,6 @@ function clearMessage(){
 }
 
 //delete snippet
-
 function handleDelete(id){
     fetch(`/snippets/${id}?_method=DELETE`,{
         method: 'POST', 
@@ -42,4 +41,19 @@ function handleTheme(){
   for(let i = 0; i < lis.length; i++){
     body !== 'black' ? lis[i].style = "background:#24292F; color:white" : lis[i].style  =  ''
   }
+}
+
+//log out user
+function handleLogout(){
+  fetch(`/logout`,{
+      method: 'POST', 
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+      },
+  })
+  .then(response => console.log(response))
+  //.then(response => response.json())
+  //.then(data => console.log(data))
+  .catch(error => console.log(error))
+
 }

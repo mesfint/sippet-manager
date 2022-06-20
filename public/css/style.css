@@ -333,7 +333,7 @@ p {
     .list-group{
        margin-top:10vh;
         flex-direction:column;
-        flex-wrap:none;
+        
     }
     .list-group-item{
         width:90%;

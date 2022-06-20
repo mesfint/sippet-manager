@@ -15,8 +15,13 @@ div.header(class="p-2 dark text-secondary")
           a(class="nav-link dark" href="/create") Add snippets
       div(class="d-flex flex-row align-items-center justify-content-end dark" style="margin-left:18%; width:48%;")
         <i class='fas fa-sun mx-3' style='font-size:24px; color:orange;' onclick='handleTheme()'></i> 
-        a(class="nav-link signup-link dark mx-1" href="/login") Login
-        a(class="nav-link signup-link dark mx-1" href="/register") signup  
+        a(class="btn" href='/#' )  #{user ? user.email : ''}
+        #user
+        if(user)
+          btn(class="btn btn-danger dark mx-1" onclick="handleLogout()") Logout
+        else 
+          a(class="nav-link signup-link dark mx-1" href="/login") Login
+          a(class="nav-link signup-link dark mx-1" href="/register") signup  
     
        
             
