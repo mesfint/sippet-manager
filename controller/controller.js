@@ -22,10 +22,11 @@ export const allSnippets = async (req, res) => {
      req.session.snippets = response
 
       res.render('pages/index', {
-          message: "You visited this page " + req.session.page_views + " times", 
+          message: "", 
           type: 'success',
           snippets:response.sort().reverse(), 
           user: req.session.user ,
+          page_views: req.session.page_views
       })
     }
   })

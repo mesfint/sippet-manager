@@ -29,6 +29,7 @@ function handleTheme(){
    let header = document.getElementsByClassName("dark");
    let inputs = document.getElementsByTagName("input");
    let lis = document.getElementsByTagName("li");
+   let moon = document.getElementsByClassName("fa-moon");
    
    //body.style.background = body.style.background != 'black' ? 'black' : '';
    //body.style = "background:black; color:white"
@@ -41,6 +42,9 @@ function handleTheme(){
   for(let i = 0; i < lis.length; i++){
     body !== 'black' ? lis[i].style = "background:#24292F; color:white" : lis[i].style  =  ''
   }
+  body !== 'black' ? moon[0].style = "background:black; color:white; font-size:28px;" : moon[0].style  =  'font-size:28px;color:black'
+
+
 }
 
 //log out user
@@ -52,8 +56,9 @@ function handleLogout(){
       },
   })
   .then(response => function(){
-    console.log(response, 'delete response')
-    window.location.replace('/')
+    console.log(response, 'delete response');
+    window.location.replace('/');
+    window.location.reload(true);
   })
   //.then(response => response.json())
   //.then(data => console.log(data))
