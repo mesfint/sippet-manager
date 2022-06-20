@@ -9,13 +9,12 @@ userRouter.get('/users', getAll)
 userRouter.get('/register', registerForm)
 userRouter.post('/register', register)
 
-
-userRouter.post('/logout', logout)
-
 //login form 
 userRouter.get('/login', loginForm)
 userRouter.post('/login', login)
 //userRouter.post('/login', loginForm)
+
+userRouter.delete('/logout', logout)
 
 
 

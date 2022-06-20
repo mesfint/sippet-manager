@@ -35,11 +35,11 @@ app.use(methodOverride('_method'))
 
 //cookies and sessions
 app.use(cookieParser());
-app.use(session({secret: "Shh, its a secret!"}));
+app.use(session({ secret: 'Shh, its a secret!', resave: true, saveUninitialized: true }));
 /// routers 
 
 //User router  should come first 
-app.use("/", userRouter); 
+app.use("/user", userRouter); 
 //snippet router
 app.use("/", snippetRouter);
 

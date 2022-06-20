@@ -117,14 +117,15 @@ export function login(req, res){
           } else {
             //callback({success: true})
             //set user as a session
-            if(req.session.logout && !req.session.user){
+            if(!req.session.logout && !req.session.user){
               req.session.user = user;
-              req.session.logout = false
+              req.session.logout = true
            } 
-            res.render("pages/login", {
+            res.render("pages/index", {
               message: "You are successfully logged in! Welcome " + user.email,
               type: "success",
               user: user,
+              snippets:req.session.snippets
             });
           }
         })
@@ -134,9 +135,21 @@ export function login(req, res){
 }
 
 export function logout(req, res){
-  if(req.session.user && !req.session.logout){
-    req.session.user = null
-    req.session.logout = true
-    res.redirect("pages/index")
-  }
+  /* User.findOne({id: req.params.id}).exec(function(error, user) {
+    if (error) {
+      //callback({error: true})
+      res.render("pages/login", {
+        message: "There is error " + error,
+        type: "error",
+      });
+    }else{ */
+      if(req.session.user && req.session.logout){
+        console.log('if works')
+        delete req.session.user
+        //req.session.user = null
+        req.session.logout = false
+        res.redirect("/");
+      }
+      
+    
 }

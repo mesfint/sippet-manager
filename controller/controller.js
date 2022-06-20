@@ -19,7 +19,8 @@ export const allSnippets = async (req, res) => {
         req.session.page_views = 1;
         //res.send("Welcome to this page for the first time!");
      }
-     
+     req.session.snippets = response
+
       res.render('pages/index', {
           message: "You visited this page " + req.session.page_views + " times", 
           type: 'success',

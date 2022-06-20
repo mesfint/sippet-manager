@@ -45,13 +45,16 @@ function handleTheme(){
 
 //log out user
 function handleLogout(){
-  fetch(`/logout`,{
+  fetch(`/user/logout?_method=DELETE`,{
       method: 'POST', 
       headers: {
           'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
       },
   })
-  .then(response => console.log(response))
+  .then(response => function(){
+    console.log(response, 'delete response')
+    window.location.replace('/')
+  })
   //.then(response => response.json())
   //.then(data => console.log(data))
   .catch(error => console.log(error))
