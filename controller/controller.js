@@ -19,12 +19,14 @@ export const allSnippets = async (req, res) => {
         req.session.page_views = 1;
         //res.send("Welcome to this page for the first time!");
      }
+     
      req.session.snippets = response
 
       res.render('pages/index', {
           message: "", 
           type: 'success',
-          snippets:response.sort().reverse(), 
+          //snippets:response.sort().reverse(), 
+          snippets:response, 
           user: req.session.user ,
           page_views: req.session.page_views
       })
