@@ -12,11 +12,23 @@ export const allSnippets = async (req, res) => {
       })
       
     }else{
+      if(req.session.page_views){
+        req.session.page_views++;
+        //res.send("You visited this page " + req.session.page_views + " times");
+     } else {
+        req.session.page_views = 1;
+        //res.send("Welcome to this page for the first time!");
+     }
+     
+     req.session.snippets = response
+
       res.render('pages/index', {
-          message:"Snippets retrieved", 
+          message: "", 
           type: 'success',
-          snippets:response.sort().reverse(), 
-          snip:{title:'Try me', description:'Amazing', snippet: 'console.log'}
+          //snippets:response.sort().reverse(), 
+          snippets:response, 
+          user: req.session.user ,
+          page_views: req.session.page_views
       })
     }
   })
@@ -49,6 +61,7 @@ export const finOneSnippet = async (req, res) => {
           snippets:response, 
           //snip:response.filter(s => s.id == req.params.id)[0]
           snip:response,
+          user: req.session.user
       })
  }
   })
@@ -97,7 +110,7 @@ export function create(req, res) {
 }
 // create form
 export function createForm(req, res) {
-  res.render("pages/create");
+  res.render("pages/create", {user:req.session.user});
 }
 
 //Get All snippet
