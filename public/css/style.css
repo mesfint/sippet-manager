@@ -66,6 +66,7 @@ p {
     /* padding: 10px; */
     margin-bottom: 10px;
 }
+
 .input-snippet {
     width: 86%;
     height: 112px;
@@ -98,6 +99,7 @@ p {
     background: rgba(217, 217, 217, 0.26);
     border-left: 3px solid #d4d5f7;
 }
+
 .hero {
     background: linear-gradient(135deg, #5961F9 0%, #EE9AE5 100%);
     border-radius: 40px 40px 153px 40px;
@@ -156,11 +158,10 @@ p {
 }
 
 .search-container {
-   
     display: flex;
     flex-direction: row;
     max-width: 96%;
-    margin:auto;
+    margin: auto;
     justify-content: space-between;
     padding: 4vh 4rem;
     /* margin: 2rem 0; */
