@@ -20,7 +20,7 @@ div.header(class="p-2 dark text-secondary")
         #user
         if(user)
           a(class="btn dark" href='/#' )  #{user.email}
-          btn(class="btn btn-outline-danger dark mx-1" onclick='handleLogout()') Logout
+          btn(class="btn btn-outline-danger dark mx-1" type="submit" onclick='handleLogout()') Logout
         else 
           a(class="nav-link signup-link dark mx-1" href="/user/login") Login
           a(class="nav-link signup-link dark mx-1" href="/user/register") signup  

@@ -40,7 +40,6 @@ userSchema.pre('save', function(next){
 
   if(this.isModified('password') || this.isNew){
     bcrypt.genSalt(saltrounds, function(saltErr, salt){
-      
       if(saltErr){ return next(saltErr)}else{
         bcrypt.hash(user.password, salt, function(hashError, hash){
           if(hashError) return next(hashError)
@@ -55,7 +54,8 @@ userSchema.pre('save', function(next){
 })
 
 // N.BBB the assigned function should 
-// not be fat arrow function since it has issue regarding using this key word here
+// Not be fat arrow function since it has issue regarding using this key word here
+//modifyPassword
 
 userSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {

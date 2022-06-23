@@ -25,7 +25,7 @@ function handleDelete(id){
 //handle Theme to dark/sun mode
 function handleTheme(){
     
-    let body =  document.getElementsByTagName("body")[0].style.background;
+   let body =  document.getElementsByTagName("body")[0].style.background;
    let header = document.getElementsByClassName("dark");
    let inputs = document.getElementsByTagName("input");
    let lis = document.getElementsByTagName("li");

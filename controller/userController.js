@@ -9,7 +9,6 @@ export function getAll(req, res){
           message:'No User found',
           type:'error',
           snippets:[],
-          
       })
       
     }else{
@@ -120,11 +119,11 @@ export function login(req, res){
             if(!req.session.logout && !req.session.user){
               req.session.user = user;
               req.session.logout = true;
-              
+
               res.render("pages/index", {
               message: "You are successfully logged in! Welcome " + user.email,
               type: "success",
-              user: user ,
+              user: user,
               snippets:req.session.snippets
             });
           } 
@@ -144,7 +143,7 @@ export function logout(req, res){
         type: "error",
       });
     }else{ */
-      if(req.session.user && req.session.logout){
+      if(req.session.user && req.sesson.logout){
         console.log('if works')
         delete req.session.user
         //req.session.user = null

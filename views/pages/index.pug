@@ -11,7 +11,7 @@ block content
         form(class="d-flex ")
           input(class="form-control me-2 w-50 " type="search" placeholder="Search" aria-label="Search")
           div(name='language' class="dropdown w-25")
-            button(class="btn  dropdown-toggle me-2   select-option" style="width:98%" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false") Select language
+            button(class="btn dropdown-toggle me-2   select-option" style="width:98%" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false") Select language
               ul(class="dropdown-menu " aria-labelledby="dropdownMenuButton2")
                 li  
                   a(class ="dropdown-item " href="#") Select Language
@@ -29,25 +29,23 @@ block content
                   a(class ="dropdown-item " href='#') NodeJs
                 li
                   a(class ="dropdown-item " href='#') MongoDB
-
           button(class=" btn btn-search-snippet  p-2 w-25  mx-auto  display:block"  href=`/create`) Search
   
   include ../includes/show_message
+
   ul.list-group.pt-4
     each snippet in snippets
       li.list-group-item.m-2
         h3(class="title") #{snippet.title}
         p(class="language") #{snippet.language}
-          div 
+          div
             a.btn(data-bs-toggle="collapse" class="btn-view-code" href=`#m${snippet._id}`) code
-            div.collapse.multi-collapse(id=`m${snippet._id}`)
+            div.collapse.multi-collapse.dark(id=`m${snippet._id}`)
               pre.code-snippet.language-javascript
               small Description : 
-              div 
+              div
                p #{snippet.description}
               small Snippet : 
               div.card.card-body #{snippet.snippet}
-              |
-              p #{snippet._id}
               a.btn.btn-outline-info.m-1(href=`/edit/${snippet._id}`) Edit
               a.btn.btn-outline-danger(href="/" onclick=`handleDelete('${snippet._id}')`) Delete 
