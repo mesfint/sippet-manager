@@ -78,7 +78,6 @@ export function loginForm(req, res){
 //login in user 
 export function login(req, res){
   const { email, password } = req.body
-  console.log(email, password)
   if(!email || !password ){
     res.render("pages/login", {
       message: "Please provide email and password *  ",
@@ -116,10 +115,9 @@ export function login(req, res){
           } else {
             //callback({success: true})
             //set user as a session
-            if(!req.session.logout && !req.session.user){
+            if(!req.session.user){
               req.session.user = user;
-              req.session.logout = true;
-
+              req.session.login = true;
               res.render("pages/index", {
               message: "You are successfully logged in! Welcome " + user.email,
               type: "success",
@@ -143,11 +141,11 @@ export function logout(req, res){
         type: "error",
       });
     }else{ */
-      if(req.session.user && req.sesson.logout){
-        console.log('if works')
+      if(req.session.user && req.session.login){
+       
         delete req.session.user
         //req.session.user = null
-        req.session.logout = false
+        req.session.login = false
         res.redirect("/");
       }
       

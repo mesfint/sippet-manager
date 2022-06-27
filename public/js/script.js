@@ -16,7 +16,11 @@ function handleDelete(id){
             'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
         },
     })
-    .then(response => console.log(response))
+    .then(function(response){
+       console.log(response)
+       window.location.replace('/');
+       window.location.reload(true);
+    })
     //.then(response => response.json())
     //.then(data => console.log(data))
     .catch(error => console.log(error))
