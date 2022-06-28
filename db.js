@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 //connect remote database
 mongoose.connect(
-  "mongodb+srv://user:user@cluster0.oeybl.mongodb.net/snippets?retryWrites=true&w=majority",
+  process.env.CONNECTION_STRING,
   {},
   (err, data) => {
     if (err) {

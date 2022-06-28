@@ -13,6 +13,7 @@ const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 
 //JWT Strategy for authorization
+
 passport.use(
   new JWTStrategy(
     {
@@ -72,32 +73,53 @@ passport.use(
   )
 )
 
-passport.use(
-  'login',
-  new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password',
-    },
-    async (email, password, done) => {
+// POST login
+router.post(
+  '/login',
+  async (req, res, next) => {
+    
+    passport.authenticate('login', async (err, user) => {
       try {
-        const user = await userService.findByEmail(email)
-        if (!user) {
-          return done(null, false, { message: 'User not found' })
+        if (err || !user) {
+          //const error = new Error('email/password is not correct.')
+          return next(err)
         }
-        const pass = user.password
-        const validate = await bcrypt.compare(password, pass)
-        //const validate = await user.isValidPassword(password)
-        if (!validate) {
-          return done(null, false, { message: 'Wrong Password' })
-        }
-        return done(null, user, { message: 'Logged in Successfully' })
+        req.login(user, { session: false }, async (error) => {
+          if (!error) {
+            const body = {
+              id: user.id,
+              email: user.email /* , isAdmin: user.isAdmin */,
+            }
+            const token = jwt.sign(
+              { user: body },
+              process.env.JWT_SECRET || 'this is secrete',
+              {
+                expiresIn: '24h',
+              }
+            )
+            //return res.json({ token, id: user.id, email:user.email })
+            return res.render(
+              'pages/index', 
+              {
+                snippets:[]/* req.session.snippets */, 
+                token:token,
+                user:{
+                  id: user.id, 
+                  email:user.email,
+                },
+                message: "You are successfully logged in! Welcome " + user.email,
+                type: "success",
+              })
+          }
+          return next(error)
+        })
       } catch (error) {
-        return done(error)
+        return next(error)
       }
-    }
-  )
+    })(req, res, next)
+  }
 )
+
 
 export const googleStrategy = new GoogleTokenStrategy(
   {
@@ -140,3 +162,4 @@ const googleAuth = async (token) => {
 }
 export default googleAuth */
 //export const jwtStrategy = new JwtStrategy({}, function () {})
+

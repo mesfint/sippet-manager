@@ -12,10 +12,10 @@ userRouter.post('/register', register)
 
 //login form 
 userRouter.get('/login', loginForm)
-userRouter.post('/login', passport.authenticate('local', {
+/* userRouter.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/user/login'
-}))
+})) */
 //userRouter.post('/login', loginForm)
 
 userRouter.delete('/logout', logout)

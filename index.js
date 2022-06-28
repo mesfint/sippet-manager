@@ -1,16 +1,25 @@
 import bodyParser from "body-parser"; //For parsing JSON and url-encoded data)
 import multer from "multer"; //For handling file uploads
 import express from "express";
+
+// Define "require"
+/* import { createRequire } from "module";
+const require = createRequire(import.meta.url); 
+const passport = require('./config/passport') */
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import passport from 'passport'
+
 import connectEnsureLogin from 'connect-ensure-login'
 import methodOverride  from 'method-override'
 import mongoose from "mongoose";
 
 import snippetRouter from "./router/snippetRouter.js";
 import userRouter from "./router/userRouter.js";
-import User from './model/user.js'
+import authRouter from "./router/authRouter.js";
+//require('dotenv').config()
+//require('./config/passport')(passport)
+
+//import passport from  './config/passport.js'
 
 const app = express();
 const upload = multer();
@@ -41,9 +50,9 @@ app.use(methodOverride('_method'))
 app.use(cookieParser());
 app.use(session({ secret: 'Shh, its a secret!', resave: true, saveUninitialized: true }));// 1 hour 
 
-app.use(passport.initialize());
-app.use(passport.session())
- 
+/* app.use(passport.initialize());
+app.use(passport.session()) */
+
 /* passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser())
@@ -53,6 +62,7 @@ passport.deserializeUser(User.deserializeUser()) */
 
 //User router  should come first 
 app.use("/user", userRouter); 
+app.use("/auth", authRouter); 
 //snippet router
 app.use("/", snippetRouter);
 
