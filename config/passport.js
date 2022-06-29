@@ -12,6 +12,7 @@ const LocalStrategy = passportLocal.Strategy
 const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 
+
 //JWT Strategy for authorization
 
 passport.use(

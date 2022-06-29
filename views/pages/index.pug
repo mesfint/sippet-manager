@@ -6,7 +6,8 @@ block content
       p(class="p-hero") Be your snippet manager.
       div(class="btn-group d-flex flex-row justify-content-between")
         a(class="btn btn-add-snippet "  href=`/create`) Add your snippet
-        a(class="btn btn-sign-up p-2"  href=`/user/register`) Sign up
+        if(!user)
+          a(class="btn btn-sign-up p-2"  href=`/user/register`) Sign up
     div(class="container-fluid m-2")
         form(class="d-flex ")
           input(class="form-control me-2 w-50 " type="search" placeholder="Search" aria-label="Search")
