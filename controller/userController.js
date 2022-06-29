@@ -2,12 +2,11 @@ import User from "../model/user.js";
 
 //get All users 
 export function getAll(req, res){
-  if(!req.session.user){
-    res.redirect('/user/login')
+  if(!req.session.user.isAdmin){
+    res.render('pages/index', {message:'Unauthrized page', type:'error', snippets:req.session.snippets, user: req.session.user})
   }else{
     User.find((err, response) => {
       if(err){
-        console.log('error happen', err)
         res.render('includes/show_message', {
             message:'No User found',
             type:'error',
@@ -15,7 +14,7 @@ export function getAll(req, res){
         })
         
       }else{
-        console.log(req, 'session from users')
+        console.log(req.session.user, 'session from users')
         res.render('pages/users', {
             message:"Persons retrieved", 
             type: 'success',
@@ -54,13 +53,11 @@ export function register(req, res) {
       });
       newUser.save((err, response) => {
         if (err) {
-          console.log(err, 'error in saving person')
           res.render("includes/show_message", {
             message: "Error saving user to db",
             type: "error",
           });
         } else {
-          console.log(response, 'success in saving user')
           res.redirect("/");
           /* res.render("includes/show_message", {
             message: "New user added",
@@ -121,12 +118,13 @@ export function login(req, res){
             //callback({success: true})
             //set user as a session
             if(!req.session.user){
-              req.session.user = user;
+              const {_id, email,isAdmin } = user
+              req.session.user = {_id, email, isAdmin};
               req.session.login = true;
               res.render("pages/index", {
               message: "You are successfully logged in! Welcome " + user.email,
               type: "success",
-              user: user,
+              user: {_id, email, isAdmin},
               snippets:req.session.snippets
             });
           } 

@@ -21,7 +21,13 @@ const userSchema = new db.Schema({
   lastname: {
     type: String,
     required: false,
+  },
+  isAdmin: {
+    type: Boolean,
+    required: false,
+    default:false,
   }
+
 });
 
 userSchema.pre('save', function(next){
