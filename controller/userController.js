@@ -2,24 +2,29 @@ import User from "../model/user.js";
 
 //get All users 
 export function getAll(req, res){
-  User.find((err, response) => {
-    if(err){
-      console.log('error happen', err)
-      res.render('includes/show_message', {
-          message:'No User found',
-          type:'error',
-          snippets:[],
-      })
-      
-    }else{
-      res.render('pages/users', {
-          message:"Persons retrieved", 
-          type: 'success',
-          users:response.sort().reverse(), 
-          user:{title:'Try me', description:'Amazing', snippet: 'console.log'}
-      })
-    }
-  })
+  if(!req.session.user){
+    res.redirect('/user/login')
+  }else{
+    User.find((err, response) => {
+      if(err){
+        console.log('error happen', err)
+        res.render('includes/show_message', {
+            message:'No User found',
+            type:'error',
+            snippets:[],
+        })
+        
+      }else{
+        console.log(req, 'session from users')
+        res.render('pages/users', {
+            message:"Persons retrieved", 
+            type: 'success',
+            users:response.sort().reverse(), 
+            user:req.session.user
+        })
+      }
+    })
+  }
 }
 // login register 
 export function registerForm(req, res){

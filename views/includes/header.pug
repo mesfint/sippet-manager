@@ -9,11 +9,15 @@ div.header(class="p-2 m-10   text-secondary")
             div(class="collapse navbar-collapse text-start navbarNav" )
                 ul(class="nav navbar-nav  mr-auto ")
                     li(class="nav-item")
-                        a(class="nav-link" href="/") Home
+                      a(class="nav-link" href="/") Home
                     li(class="nav-item")
-                        a(class="nav-link "  href="/")  Snippets
+                      a(class="nav-link "  href="/")  Snippets
                     li(class="nav-item")
-                        a(class="nav-link" href="/create") Add snippets
+                      a(class="nav-link" href="/create") Add snippets
+                    li(class="nav-item")
+                    if(user)
+                      a(class="btn btn-outline-info nav-link" href="/user/users") Dashboard
+                      
             div(class=" collapse navbar-collapse text-start navbarNav")
               div(class="col-4 form-check form-switch text-start ms-auto me-3")
                 label(class="form-check-label ms-3" for="lightSwitch")               

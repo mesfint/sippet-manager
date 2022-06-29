@@ -69,47 +69,56 @@ export const finOneSnippet = async (req, res) => {
 //create snippet
 
 export function create(req, res) {
-  const snippetInfo = req.body; //get the parsed information
+  if(!req.session.user){
+    res.redirect('/user/login')
+  }else{
+    const snippetInfo = req.body; //get the parsed information
 
-  if (
-    !snippetInfo.title ||
-    !snippetInfo.description ||
-    !snippetInfo.language ||
-    !snippetInfo.snippet
-  ) {
-    res.render("pages/create", {
-      message: "Please fill in all fields",
-      type: "error",
-    });
-  } else {
-    const newSnippet = new Snippet({
-      title: snippetInfo.title,
-      description: snippetInfo.description,
-      language: snippetInfo.language,
-      snippet: snippetInfo.snippet,
-    });
+    if (
+      !snippetInfo.title ||
+      !snippetInfo.description ||
+      !snippetInfo.language ||
+      !snippetInfo.snippet
+    ) {
+      res.render("pages/create", {
+        message: "Please fill in all fields",
+        type: "error",
+      });
+    } else {
+      const newSnippet = new Snippet({
+        title: snippetInfo.title,
+        description: snippetInfo.description,
+        language: snippetInfo.language,
+        snippet: snippetInfo.snippet,
+      });
 
-    newSnippet.save((err, response) => {
-     // console.log(ObjectId(`${response.id}`).getTimestamp(), 'timestamp id')
-      if (err) {
-        res.render("pages/create", {
-          message: "Error saving snippet to db",
-          type: "error",
-        });
-      } else {
-        res.redirect("/");
-        /* res.render("includes/show_message", {
-          message: "New snippet added",
-          type: "success",
-          snippet: response,
-        }); */
-      }
-    });
+      newSnippet.save((err, response) => {
+      // console.log(ObjectId(`${response.id}`).getTimestamp(), 'timestamp id')
+        if (err) {
+          res.render("pages/create", {
+            message: "Error saving snippet to db",
+            type: "error",
+          });
+        } else {
+          res.redirect("/");
+          /* res.render("includes/show_message", {
+            message: "New snippet added",
+            type: "success",
+            snippet: response,
+          }); */
+        }
+      });
+    }
   }
 }
 // create form
 export function createForm(req, res) {
-  res.render("pages/create", {user:req.session.user});
+  if(!req.session.user){
+    res.render("pages/login",{message:'Please Login to add snippets',type:'error'})
+  }else{
+    res.render("pages/create", {user:req.session.user});
+  }
+  
 }
 
 //Get All snippet
