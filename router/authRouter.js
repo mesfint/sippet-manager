@@ -22,7 +22,7 @@ passport.use(
       try {
         User.findOne({ email: email }).exec(function(error, user){
 
-          if (error) {
+          if (error || !user ) {
             return done(null, false, { message: 'User not found' })
           }
           
@@ -97,41 +97,45 @@ router.post(
         try {
           if (err || !user) {
             //const error = new Error('email/password is not correct.')
-             res.render('pages/login', {
+            /* return res.render('pages/login', {
               type:'error',
               message: 'some error ',
-            }).then(next(err))
+            }) */
+            return next(err)
             
-          }
-          req.login(user, { session: false }, async (error) => {
-            if (!error) {
-              const body = {
-                id: user.id,
-                email: user.email /* , isAdmin: user.isAdmin */,
-              }
-              const token = jwt.sign(
-                { user: body },
-                process.env.JWT_SECRET || 'this is secrete',
-                {
-                  expiresIn: '24h',
+          }else{
+
+          
+            req.login(user, { session: false }, async (error) => {
+              if (!error) {
+                const body = {
+                  id: user.id,
+                  email: user.email /* , isAdmin: user.isAdmin */,
                 }
-              )
-              //return res.json({ token, id: user.id, email:user.email })
-              return res.render(
-                'pages/index', 
-                {
-                  snippets:[]/* req.session.snippets */, 
-                  token:token,
-                  user:{
-                    id: user.id, 
-                    email:user.email,
-                  },
-                  message: "You are successfully logged in! Welcome " + user.email,
-                  type: "success",
-                })
-            }
-            return next(error)
-          })
+                const token = jwt.sign(
+                  { user: body },
+                  process.env.JWT_SECRET || 'this is secrete',
+                  {
+                    expiresIn: '24h',
+                  }
+                )
+                //return res.json({ token, id: user.id, email:user.email })
+                return res.render(
+                  'pages/index', 
+                  {
+                    snippets:[]/* req.session.snippets */, 
+                    token:token,
+                    user:{
+                      id: user.id, 
+                      email:user.email,
+                    },
+                    message: "You are successfully logged in! Welcome " + user.email,
+                    type: "success",
+                  })
+              }
+              return next(error)
+            })
+          }
         } catch (error) {
           return next(error)
         }

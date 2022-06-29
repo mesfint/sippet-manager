@@ -8,7 +8,6 @@ export const allSnippets = async (req, res) => {
           message:'No Snippet found',
           type:'error',
           snippets:[],
-          
       })
       
     }else{

@@ -16,7 +16,7 @@ userRouter.get('/login', loginForm)
     successRedirect: '/',
     failureRedirect: '/user/login'
 })) */
-//userRouter.post('/login', loginForm)
+userRouter.post('/login', login)
 
 userRouter.delete('/logout', logout)
 

@@ -4,3 +4,8 @@
 /views/includes/header1.pug
 
 /.env
+/router/auth.js
+/router/authRouter.js
+/controller/userControllerCopy.js
+/config
+/model/userCopy.js

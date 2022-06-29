@@ -1,7 +1,10 @@
 import db from "../db.js";
 import bcrypt from 'bcryptjs'
-//using passport js
-import passportLocalMongoose from 'passport-local-mongoose';
+
+//using passport passportLocal mongoose strategy
+//import passportLocalMongoose from 'passport-local-mongoose';
+
+
 const userSchema = new db.Schema({
   email: {
     type: String,
@@ -53,6 +56,6 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
 }
 
 
-/* userSchema.plugin(passportLocalMongoose);
- */
+//userSchema.plugin(passportLocalMongoose);
+
 export default db.model("User", userSchema);
