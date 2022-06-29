@@ -15,8 +15,9 @@ div.header(class="p-2 m-10   text-secondary")
                     li(class="nav-item")
                       a(class="nav-link" href="/create") Add snippets
                     li(class="nav-item")
-                    if(user.isAdmin)
-                      a(class="btn btn-outline-info nav-link" href="/user/users") Dashboard
+                    if(user)
+                      if(!user.isAdmin)
+                        a(class="btn btn-outline-info nav-link" href="/user/users") Dashboard
                       
             div(class=" collapse navbar-collapse text-start navbarNav")
               div(class="col-4 form-check form-switch text-start ms-auto me-3")
