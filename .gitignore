@@ -2,10 +2,9 @@
 /test.js
 /views/index2.pug
 /views/includes/header1.pug
-
 /.env
 /router/auth.js
 /router/authRouter.js
 /controller/userControllerCopy.js
-/config
+/config/passport.js
 /model/userCopy.js
