@@ -24,8 +24,11 @@ userRouter.post("/login", login);
 
 //login form
 userRouter.get("/login", loginForm);
+
+//user logout 
+userRouter.post("/logout", logout)
 /* userRouter.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/user/login'
-    */
+*/
 export default userRouter;

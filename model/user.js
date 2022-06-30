@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 
 //using passport passportLocal mongoose strategy
 //import passportLocalMongoose from 'passport-local-mongoose';
-
+const saltrounds = 10
 
 const userSchema = new db.Schema({
   email: {
@@ -25,7 +25,7 @@ const userSchema = new db.Schema({
   isAdmin: {
     type: Boolean,
     required: false,
-    default:false,
+    default: false,
   }
 
 });

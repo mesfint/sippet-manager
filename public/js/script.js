@@ -54,7 +54,7 @@ function handleTheme(){
 
 //log out user
 function handleLogout(){
-  fetch(`/user/logout?_method=DELETE`,{
+  fetch(`/user/logout`,{
       method: 'POST', 
       headers: {
           'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
@@ -62,8 +62,8 @@ function handleLogout(){
   })
   .then(response => function(){
     console.log(response, 'delete response');
-    window.location.replace('/');
-    window.location.reload(true);
+    /* window.location.replace('/');
+    window.location.reload(true); */
   })
   //.then(response => response.json())
   //.then(data => console.log(data))
