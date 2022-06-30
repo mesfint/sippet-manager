@@ -56,7 +56,7 @@ export function register(req, res) {
       });
       newUser.save((err, response) => {
         if (err) {
-          res.render("includes/show_message", {
+          res.render("pages/register", {
             message: "Error saving user to db",
             type: "error",
           });
@@ -146,6 +146,7 @@ export function logout(req, res) {
         type: "error",
       });
     }else{ */
+    console.log('logout clided')
   if (req.session.user && req.session.login) {
     delete req.session.user;
     //req.session.user = null
