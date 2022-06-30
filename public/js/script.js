@@ -18,8 +18,9 @@ function handleDelete(id){
     })
     .then(function(response){
        console.log(response)
-       window.location.replace('/');
        window.location.reload(true);
+       window.location.replace('/');
+      
     })
     //.then(response => response.json())
     //.then(data => console.log(data))
