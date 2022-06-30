@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import {
   register,
   getAll,
@@ -21,6 +22,10 @@ userRouter.get("/login", loginForm);
 userRouter.post("/login", login);
 //userRouter.post('/login', loginForm)
 
-userRouter.delete("/logout", logout);
-
+//login form
+userRouter.get("/login", loginForm);
+/* userRouter.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/user/login'
+    */
 export default userRouter;

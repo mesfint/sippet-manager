@@ -1,10 +1,4 @@
 import db from "../db.js";
-import bcrypt from 'bcryptjs'
-
-//using passport passportLocal mongoose strategy
-//import passportLocalMongoose from 'passport-local-mongoose';
-
-
 const userSchema = new db.Schema({
   email: {
     type: String,
@@ -21,13 +15,7 @@ const userSchema = new db.Schema({
   lastname: {
     type: String,
     required: false,
-  },
-  isAdmin: {
-    type: Boolean,
-    required: false,
-    default:false,
   }
-
 });
 
 userSchema.pre('save', function(next){
@@ -60,8 +48,5 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
     cb(null, isMatch)
   })
 }
-
-
-//userSchema.plugin(passportLocalMongoose);
 
 export default db.model("User", userSchema);
